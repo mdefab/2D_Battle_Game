@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./src/css/style.css">
+    <title>Battle Bots 2D</title>
+</head>
+<body>
+    <h1 class="main-header">BATTLE BOTS 2D</h1>
+    <div class="game-box">
+    <div class="game-container">
+    <div class="game-menu"> 
+        <h2>MENU</h2>
+        <button class="guide">Player Guide</button> 
+        <div class="menu-grid">
+            <div class="menu-player-one"></div> 
+            <div class="menu-player-two"></div> 
+        </div> 
+    </div>
+    <div class="overlay hidden"></div>
+        <div class="player-container player-one">
+            <h2>Player 1</h2> 
+            <img class="img-player img-player-one" src="./src/img/player_one.jpg" alt="player one image"> 
+            <div class="selection-box selection-one">
+                <select class="form-select choice-player-one" aria-label="player move choice">
+                    <option selected>Choose your move!</option>
+                    <option value="attack">Attack</option>
+                    <option value="defend">Defend</option>
+                    <option value="item">Pick up an item!</option>
+                  </select>
+                  <button class="ready ready-one">Ready!</button>
+                  <!-- once player clicks ready, menu disappears and button shows active color (active class will be added)
+                    Round will proceed once both players click ready -->
+
+            </div>
+        </div>
+    </div>
+        <div class="player-container player-two"> 
+            <h2>Player 2</h2> 
+            <img class="img-player img-player-two" src="./src/img/player_two.jpg" alt="player two image">
+            <div class="selection-box selection-two">
+                <select class="form-select choice-player-two" aria-label="player move choice">
+                    <option selected>Choose your move!</option>
+                    <option value="attack">Attack</option>
+                    <option value="defend">Defend</option>
+                    <option value="item">Pick up an item!</option>
+                  </select>
+                  <button class="ready ready-two">Ready!</button>
+            </div>
+            
+        </div>
+    </div>
+</div>
+</body>
+</html>
