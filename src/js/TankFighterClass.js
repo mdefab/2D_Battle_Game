@@ -1,0 +1,16 @@
+import BaseFighter from "./BaseFighterClass.js";
+
+class TankFighter extends BaseFighter {
+    health = 200;
+    stamina = 100;
+    attackLevel = 1.5;
+    defenceLevel = 4;
+    itemsAvailable = [{'sword': 1.3}, {'health': 10}, {'health': 20},
+    {'health': 30}, {'health': 40}, {'health': 50}, {'stamina': 20},
+    {'stamina': 30}, {'stamina': 50}, {'armour': 1.4}];
+    itemsEquipped = {};
+    attackMessage = "ROARR!"
+}; 
+
+
+export default TankFighter;
