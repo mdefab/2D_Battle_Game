@@ -6,19 +6,20 @@ class BaseFighter {
     itemsAvailable = [];
     itemsEquipped = {};
     attackMessage;
+    fighterType;
 
     constructor(playerName){
         this.playerName = playerName;
     }
 
     ready() {
-        return `${this.playerName} ready!`;
+        return `${this.playerName} ready. ${this.fighterType} selected!`;
     }
 
     #warCry(){
         return this.attackMessage;
     }
-
+    //returns damage
     attack(){
         this.#warCry();
         const damage = this.attackLevel * this.#randomNumberGenerator() * this.stamina/100 * Number(`${this.itemsEquipped.weapon? this.itemsEquipped.weapon.attackMultiplier: 1}`);
@@ -26,18 +27,42 @@ class BaseFighter {
         return damage;
     }
 
-    defend(damage){
+    #defend(damage){
         this.#staminaChange(10);
         const defence = this.defenceLevel * this.#randomNumberGenerator() * this.stamina/100 * Number(`${this.itemsEquipped.armour? this.itemsEquipped.armour.defenceMultiplier: 1}`);
-        const damageTaken = damage - defence;
-        return damageTaken > 0? this.health -= damageTaken: this.health;
+        const damaged = damage - defence;
+        return damaged <= 0? this.health: this.health -= damaged;
     }
 
-    chooseItem(damage){
-        this.#health -= damage;
-        if(this.itemsAvailable.length === 0) return "No more items remaining!"
-        index = Math.floor(Math.random() * (this.itemsAvailable.length + 1))
-        this.itemsEquipped.push(this.itemsAvailable.splice(index, 1));
+    //adds item to list. items will be activated after taking damage.
+    chooseItem(){
+        if(this.itemsAvailable.length === 0) return "No more items remaining!";
+        const index = Math.floor(Math.random() * (this.itemsAvailable.length))
+        const item = this.itemsAvailable.splice(index, 1)
+        //this.itemsEquipped.weapon? this.itemsEquipped.weapon.attackMultiplier
+        // e.g. itemsEquipped = {'weapon': {'name': 'spear', attackMultiplier': 1.5}}
+        if(item.spear | item.sword | item.hammer){
+            return
+        }
+        //this.itemsEquipped.armour? this.itemsEquipped.armour.defenceMultiplier
+        if(item.armour| item.shield){
+            return
+        }
+        if(item.health){
+            return
+        }
+        if(item.stamina){
+            return
+        }
+        this.itemsEquipped.push(item);
+    }
+    // returns health after damage taken
+    damageTaken(damage, defend){
+        if(defend === true){
+            return this.#defend(damage)
+        }else {
+          return this.health -= damage;
+        }
     }
 
     #staminaChange(number){
@@ -47,6 +72,11 @@ class BaseFighter {
 
     #randomNumberGenerator(){
         return Math.floor(Math.random() * 11);
+    }
+
+    isAlive(){
+        if(this.health <= 0) return false
+        return true
     }
 };
 

@@ -5,11 +5,12 @@ class AthleteFighter extends BaseFighter {
     stamina = 150;
     attackLevel = 2;
     defenceLevel = 2;
-    itemsAvailable = [{'spear': 1.5}, {'health': 10}, {'health': 20},
-    {'health': 30}, {'health': 40}, {'health': 50}, {'stamina': 20},
-    {'stamina': 30}, {'stamina': 50}, {'armour': 1.4}];
+    itemsAvailable = [['spear', 1.5], ['health', 10], ['health', 20],
+    ['health', 30], ['health', 40], ['health', 50], ['stamina', 20],
+    ['stamina', 30], ['stamina', 50], ['armour', 1.4]];
     itemsEquipped = {};
     attackMessage = "Wa-powww"
+    fighterType = "Athlete"
 
 }   
 
