@@ -91,6 +91,10 @@ _
     get itemsEquipped(){
         return this._itemsEquipped;
     }
+
+    get fighterType(){
+        return this._fighterType;
+    }
 };
 
 

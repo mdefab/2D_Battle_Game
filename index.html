@@ -5,22 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./src/css/style.css">
+    <script src="./src/js/controller.js" type="module"></script>
     <title>Battle Bots 2D</title>
 </head>
 <body>
     <h1 class="main-header">BATTLE BOTS 2D</h1>
     <div class="game-box">
     <div class="game-container">
-    <div class="game-menu"> 
-        <h2>MENU</h2>
-        <button class="guide">Player Guide</button> 
-        <div class="menu-grid">
-            <div class="menu-player-one"></div> 
-            <div class="menu-player-two"></div> 
-        </div> 
-    </div>
-    <div class="overlay hidden"></div>
         <div class="player-container player-one">
+            <div class="player-score score-player-one">Score: </div> 
+            <div class="player-vitals vitals-player-one">Health: <br>Stamina:</div>
             <h2>Player 1</h2> 
             <img class="img-player img-player-one" src="./src/img/player_one.jpg" alt="player one image"> 
             <div class="selection-box selection-one">
@@ -33,11 +27,12 @@
                   <button class="ready ready-one">Ready!</button>
                   <!-- once player clicks ready, menu disappears and button shows active color (active class will be added)
                     Round will proceed once both players click ready -->
-
             </div>
-        </div>
     </div>
         <div class="player-container player-two"> 
+            <div class="player-score score-player-two">Score: </div> 
+            <div class="player-vitals vitals-player-two">Health: <br>
+                Stamina:</div>
             <h2>Player 2</h2> 
             <img class="img-player img-player-two" src="./src/img/player_two.jpg" alt="player two image">
             <div class="selection-box selection-two">
@@ -49,9 +44,51 @@
                   </select>
                   <button class="ready ready-two">Ready!</button>
             </div>
-            
+        </div>
         </div>
     </div>
+    <div class="game-menu"> 
+        <h1>FIGHTER MENU</h1>
+        <button class="btn-guide">Player Guide</button> 
+        <div class="menu-grid">
+            <div class="player-menu menu-player-one">
+                <h2>Player 1</h2>
+                <input type="text" id="player-name--one" name="player-name--one" placeholder="Enter Username"><br>
+                <select class="form-select fighter-choice--one" aria-label="fighter choice">
+                    <option selected>Choose your fighter!</option>
+                    <option value="attack">Athlete</option>
+                    <option value="defend">Bruiser</option>
+                    <option value="item">Tank</option>
+                  </select><br>
+                <button class="start-game start-one">Fight!</button>
+                <p class="error-message error-one"></p>
+            </div> 
+            <div class="player-menu menu-player-two">
+                <h2>Player 2</h2>
+                <input type="text" id="player-name--two" name="player-name--two" placeholder="Enter Username"><br>
+                <select class="form-select fighter-choice--two" aria-label="fighter choice">
+                    <option selected>Choose your fighter!</option>
+                    <option value="attack">Athlete</option>
+                    <option value="defend">Bruiser</option>
+                    <option value="item">Tank</option>
+                  </select> <br>
+                <button class="start-game start-two">Fight!</button>
+                <p class="error-message error-two"></p>
+            </div> 
+        </div> 
+    </div>
+    <div class="overlay"></div>
 </div>
 </body>
 </html>
+
+<!-- toggle hidden class for overlay and menus-->
+
+<!-- Html for player guide on-click:
+    <div class="guide-menu hidden">
+        <h1>Instructions:</h1>
+        <p>Rules go here</p>
+    </div>
+
+
+-->
