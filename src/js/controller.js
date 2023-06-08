@@ -6,19 +6,14 @@ const controlViewGuideMenu = function(){
 };
 
 
-//todo: combine these into one control handler.
-const controlPlayerOneStartButton = function(){
-    console.log("Player one ready");
+//todo: pass data into model to initialize fighter class
+const controlStartButton = function(data){
+    console.log(`${data.playerOne.name} chooses ${data.playerOne.fighter} and ${data.playerTwo.name} chooses ${data.playerTwo.fighter}`);
 };
-
-const controlPlayerTwoStartButton = function(){
-    console.log("Player two ready");
-}
 
 const init = function(){
     FighterMenuView.addHandlerGuideButton(controlViewGuideMenu);
-    FighterMenuView.addHandlerStartOneButton(controlPlayerOneStartButton);
-    FighterMenuView.addHandlerStartTwoButton(controlPlayerTwoStartButton);
+    FighterMenuView.addHandlerStartButton(controlStartButton);
 };
 
 init();
