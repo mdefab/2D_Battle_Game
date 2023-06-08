@@ -2,16 +2,16 @@
 
 class FighterMenuView {
     _guideMenuButton = document.querySelector(".btn-guide");
+    _gameMenu = document.querySelector(".game-menu");
+    _overlay = document.querySelector(".overlay");
     _playerOneName;
     _playerTwoName;
     _playerOneFighterChoice;
     _playerTwoFighterChoice;
-    _errorMessageOne = document.querySelector(".error-one");
-    _errorMessageTwo = document.querySelector(".error-two");
-    _startButtonOne = document.querySelector(".start-one");
-    _startButtonTwo = document.querySelector(".start-two");
-    _messageOne = document.querySelector(".message-one");
-    _messageTwo = document.querySelector(".message-two");
+    _startButtonOne = document.querySelector(".start--one");
+    _startButtonTwo = document.querySelector(".start--two");
+    _messageOne = document.querySelector(".message--one");
+    _messageTwo = document.querySelector(".message--two");
     _startOne = false;
     _startTwo = false;
 
@@ -58,6 +58,7 @@ class FighterMenuView {
                 return; //other player not ready
             }
             this._clearMessages();
+            this._hideMenuandOverlay();
             const setUpData = this._getPlayerChoices();
            
             handler(setUpData);
@@ -69,7 +70,9 @@ class FighterMenuView {
                 this._messageTwo.insertAdjacentHTML('afterbegin', "Player 2 ready. <br> Waiting for player 1");
                 return; //other player not ready
             }
+
             this._clearMessages();
+            this._hideMenuandOverlay();
             const setUpData = this._getPlayerChoices();
 
             handler(setUpData);
@@ -80,6 +83,12 @@ class FighterMenuView {
     _clearMessages(){
         this._messageTwo.innerHTML = '';
         this._messageOne.innerHTML = '';
+    }
+
+
+    _hideMenuandOverlay(){
+        this._gameMenu.classList.add("hidden");
+        this._overlay.classList.add("hidden");
     }
 
 };
