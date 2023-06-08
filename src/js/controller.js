@@ -1,9 +1,9 @@
 import FighterMenuView from "./views/FighterMenuView.js";
 
 
-const controlViewGuideMenu = function(){
-    console.log("Guide menu button clicked");
-};
+// const controlViewGuideMenu = function(){
+//     console.log("Guide menu button clicked");
+// };
 
 
 //todo: pass data into model to initialize fighter class
@@ -12,7 +12,7 @@ const controlStartButton = function(data){
 };
 
 const init = function(){
-    FighterMenuView.addHandlerGuideButton(controlViewGuideMenu);
+    // FighterMenuView.addHandlerGuideButton(controlViewGuideMenu);
     FighterMenuView.addHandlerStartButton(controlStartButton);
 };
 

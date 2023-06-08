@@ -1,9 +1,6 @@
 // later refactor to avoid duplication of player one and two code.
-
 class FighterMenuView {
-    _guideMenuButton = document.querySelector(".btn-guide");
     _gameMenu = document.querySelector(".game-menu");
-    _overlay = document.querySelector(".overlay");
     _playerOneName;
     _playerTwoName;
     _playerOneFighterChoice;
@@ -15,11 +12,22 @@ class FighterMenuView {
     _startOne = false;
     _startTwo = false;
 
+    constructor(){
+        this._openGuideMenuButton = document.querySelector(".btn-guide");
+        this._closeGuideMenuButton = document.querySelector(".close-guide");
+        this._playerGuideMenu = document.querySelector('.player-guide');
+        this._overlay = document.querySelector(".overlay");
+        let self = this;
 
-//listen for click on player guide
-    addHandlerGuideButton(handler){
-        this._guideMenuButton.addEventListener('click', function(){
-            handler();
+        this._openGuideMenuButton.addEventListener('click', function(){
+            console.log("Guide button clicked");
+            self._overlay.style.zIndex = 1100;
+            self._playerGuideMenu.classList.remove("hidden");
+        });
+        this._closeGuideMenuButton.addEventListener('click', function(){
+            console.log("Close guide button clicked");
+            self._overlay.style.zIndex = 100;
+            self._playerGuideMenu.classList.add("hidden");
         })
     }
 
