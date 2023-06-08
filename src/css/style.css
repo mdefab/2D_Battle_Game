@@ -19,7 +19,7 @@ body {
     border-radius: 10px;
     text-align: center;
     margin:2rem;
-    z-index:1100;
+    z-index:1200;
     position:relative;
     
 }
@@ -143,7 +143,13 @@ body {
     padding: 2rem;
     box-shadow: 0 4rem 6rem rgba(0, 0, 0, 0.15);
     z-index: 1500;
+    font-size:1.2rem;
+    max-height:80%;
+    overflow: hidden;
+    overflow-y:auto;
+    
 }
+
 
 .close-guide {
     position: absolute;

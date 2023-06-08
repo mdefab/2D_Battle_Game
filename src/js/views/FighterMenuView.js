@@ -1,4 +1,3 @@
-// later refactor to avoid duplication of player one and two code.
 class FighterMenuView {
     _gameMenu = document.querySelector(".game-menu");
     _playerOneName;
@@ -19,13 +18,13 @@ class FighterMenuView {
         this._overlay = document.querySelector(".overlay");
         let self = this;
 
+        //open player guide on guide button click
         this._openGuideMenuButton.addEventListener('click', function(){
-            console.log("Guide button clicked");
             self._overlay.style.zIndex = 1100;
             self._playerGuideMenu.classList.remove("hidden");
         });
+        //close player guide on close button click
         this._closeGuideMenuButton.addEventListener('click', function(){
-            console.log("Close guide button clicked");
             self._overlay.style.zIndex = 100;
             self._playerGuideMenu.classList.add("hidden");
         })
