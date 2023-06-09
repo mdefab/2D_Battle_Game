@@ -40,8 +40,8 @@ body {
     background-color: white;
     padding: 2rem;
     font-size: 1.5rem;
-    height:70vh;
-    width:80vh;
+    height:65vh;
+    width:65vh;
     position: relative;
 }
 
@@ -69,10 +69,26 @@ body {
     top:5%;
 }
 
-.player-attack,
+.player-attack {
+    position:absolute;
+    top:50%;
+    z-index:2;
+    max-width:20%;
+    overflow: hidden;
+    overflow: auto;
+}
+
 .player-inventory {
     position:absolute;
     top:50%;
+    background-color: rgb(151, 39, 39);
+    padding:1rem;
+    border-radius:10px;
+}
+
+.equipped-items {
+    display:flex;
+    background-color: rgb(102, 27, 27);
 }
 
 .attack-player--one,
@@ -88,7 +104,7 @@ body {
 
 .img-player {
     height:auto;
-    max-height:80%;
+    max-height:70%;
     max-width:100%;
 }
 
@@ -200,4 +216,9 @@ body {
     .game-container{
         flex-direction: column;
     }
+@media(max-width:30rem){
+    .player-container{
+        width:auto;
+    }
+}
 }

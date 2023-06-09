@@ -4,7 +4,7 @@ import * as model from "./model.js";
 
 //todo: pass data into model to initialize fighter class
 const controlStartButton = function(data){
-    model.initializeGame(data);
+    const gameState = model.initializeGame(data);
 };
 
 const init = function(){

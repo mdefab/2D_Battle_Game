@@ -4,11 +4,13 @@ import TankFighter from './TankFighterClass.js';
 
 export const gameState = {
     'gameStats': {
-        'playerOne': {"Score": 0},
-        'playerTwo': {"Score": 0},
+        'playerOne': {"score": 0},
+        'playerTwo': {"score": 0},
     },
     // push this data in with model method and class instance
     // 'playerOne': {
+        // 'name': "player 1",
+        // 'fighter': 'Athlete',
     //     'health': 100,
     //     'stamina': 100,
     //     'itemsEquiped': [],
@@ -27,14 +29,12 @@ export const gameState = {
 
 //model will receive data, make an instance of the appropriate fighter class, and push player health/stamina status to gameState
 export const initializeGame = function(data){
-    console.log(`${data.playerOne.name} chooses ${data.playerOne.fighter} and ${data.playerTwo.name} chooses ${data.playerTwo.fighter}`);
     const fighterOne = initializeFighter(data.playerOne.fighter,data.playerOne.name);
     const fighterTwo = initializeFighter(data.playerTwo.fighter,data.playerTwo.name);
     gameState.playerOne = buildPlayerObject(fighterOne);
     gameState.playerTwo = buildPlayerObject(fighterTwo);
-    
-    console.log(gameState);
-}
+    return gameState;
+};
 
 
 const initializeFighter = function(fighter, username){
@@ -44,9 +44,9 @@ const initializeFighter = function(fighter, username){
         case "Athlete":
             return new AthleteFighter(username);
         case "Bruiser":
-            return new new BruiserFighter(username);
-    }
-}
+            return new BruiserFighter(username);
+    };
+};
 
 
 const buildPlayerObject = function(data){
@@ -55,8 +55,8 @@ const buildPlayerObject = function(data){
     'health': data.health,
     'stamina': data.stamina,
     'itemsEquipped': data.itemsEquipped, 
-    }
-}
+    };
+};
 
 
 //model will export playerData after moves so frontend can be updated
