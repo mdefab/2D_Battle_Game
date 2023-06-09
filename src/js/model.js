@@ -4,8 +4,8 @@ import TankFighter from './TankFighterClass.js';
 
 export const gameState = {
     'gameStats': {
-        'playerOne': {"score": 0},
-        'playerTwo': {"score": 0},
+        'playerOneScore': 0,
+        'playerTwoScore': 0,
     },
     // push this data in with model method and class instance
     // 'playerOne': {
