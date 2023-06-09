@@ -1,23 +1,40 @@
 class GameView {
     _scorePlayerOne = document.querySelector('.score-player--one');
     _scorePlayerTwo = document.querySelector('.score-player--two');
-    //eventlistener for ready button - perhaps in constructor
+    _vitalsPlayerOne = document.querySelector('.vitals-player--one');
+    _vitalsPlayerTwo = document.querySelector('.vitals-player--two');
+    _readyOne = false;
+    _readyTwo = false;
+    
+    //eventlistener for ready button
+
+
 
     //method to update score on page. Should be called at start and after each game.
     updateScore(playerOneScore, playerTwoScore){
-        this._scorePlayerOne.innerHTML = ''
-        this._scorePlayerTwo.innerHTML = ''
+        this._scorePlayerOne.innerHTML = '';
+        this._scorePlayerTwo.innerHTML = '';
         this._scorePlayerOne.insertAdjacentHTML('afterbegin', `Score: ${playerOneScore}`);
         this._scorePlayerTwo.insertAdjacentHTML('afterbegin',`Score: ${playerTwoScore}`);
     }
     
     //method to update health/stamina between rounds
+    updateHealthandStamina(playerOne, playerTwo){
+        this._vitalsPlayerOne.innerHTML = '';
+        this._vitalsPlayerTwo.innerHTML = '';
+        this._vitalsPlayerOne.insertAdjacentHTML('afterbegin', `Health: ${playerOne.health} <br> Stamina: ${playerOne.stamina}`);
+        this._vitalsPlayerTwo.insertAdjacentHTML('afterbegin', `Health: ${playerTwo.health} <br> Stamina: ${playerTwo.stamina}`);
+    }
 
     //method to update fighter image
 
+
     //method to show attack value on attack
 
-    //method to update inventory
+
+    //method to update inventory toggle hidden class from
+    // inventory depending if empty or not
+
 
     //method to update message if waiting for a player 
     // or no choice selected
@@ -31,6 +48,8 @@ class GameView {
         const move = moveOptions[index]
         return move
     }
+
+    // method to reset ready status between rounds
 
 };
 

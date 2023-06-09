@@ -63,3 +63,5 @@ const buildPlayerObject = function(data){
 export const playerData = function(){
     return;
 }
+
+// implement a class method that the model will call to reset stats between games

@@ -7,6 +7,7 @@ import * as model from "./model.js";
 const controlStartButton = function(data){
     const gameState = model.initializeGame(data);
     GameView.updateScore(gameState.gameStats.playerOneScore, gameState.gameStats.playerTwoScore);
+    GameView.updateHealthandStamina(gameState.playerOne, gameState.playerTwo);
 };
 
 const init = function(){
