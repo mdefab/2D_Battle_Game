@@ -69,6 +69,23 @@ body {
     top:5%;
 }
 
+.player-attack,
+.player-inventory {
+    position:absolute;
+    top:50%;
+}
+
+.attack-player--one,
+.inventory-player--two {
+    right: 10%;
+}
+
+.attack-player--two,
+.inventory-player--one {
+    left: 5%;
+}
+
+
 .img-player {
     height:auto;
     max-height:80%;

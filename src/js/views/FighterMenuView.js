@@ -101,5 +101,4 @@ class FighterMenuView {
 };
 
 
-
 export default new FighterMenuView();
