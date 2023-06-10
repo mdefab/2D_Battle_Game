@@ -10,8 +10,10 @@ const controlStartButton = function(data){
 };
 
 //receives move choice. todo: pass choice into model to get result of move
-const controlReadyButton = function(data){
-    console.log(data);
+const controlReadyButton = function(move){
+    model.fighterMoveResult(1, move.playerOneMove);
+    model.fighterMoveResult(2, move.playerTwoMove);
+    model.updatedGameState();
 }
 
 const init = function(){

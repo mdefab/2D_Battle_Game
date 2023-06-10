@@ -56,6 +56,7 @@ _
         if(name === "stamina"){
             this._stamina += value;
         }
+        return item;
     }
     // returns health after damage taken
     damageTaken(damage, defend){
