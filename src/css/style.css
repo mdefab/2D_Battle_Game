@@ -207,7 +207,7 @@ body {
     display:none;
 }
 
-@media(max-width: 55rem){
+@media(max-width: 60rem){
     .menu-grid{
         display:flex;
         flex-direction: column;

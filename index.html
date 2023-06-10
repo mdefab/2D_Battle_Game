@@ -23,7 +23,7 @@
             
             <h2>Player 1</h2> 
             <img class="img-player img-player-one" src="./src/img/player_one.jpg" alt="player one image"> 
-            <div class="selection-box selection-one">
+            <div class="selection-box selection--one">
                 <label for="choice-player--one">Choose your move!</label><br>
                 <select class="form-select choice-player--one" name="choice-player--one" id="choice-player--one" aria-label="player move choice">
                     <option selected value="random">Random</option>
@@ -32,10 +32,9 @@
                     <option value="item">Pick up an item!</option>
                   </select>
                   <button class="ready ready-one">Ready!</button>
-                  <p class="game-message game-message--one"></p>
-                  <!-- once player clicks ready, menu disappears and button shows active color (active class will be added)
-                    Round will proceed once both players click ready -->
+                  <!-- once player clicks ready, selection menu disappears. Round will proceed once both players click ready -->
             </div>
+            <p class="game-message game-message--one"></p>
     </div>
         <div class="player-container player-two"> 
             <div class="player-score score-player--two"></div> 
@@ -56,8 +55,8 @@
                     <option value="item">Pick up an item!</option>
                   </select>
                   <button class="ready ready-two">Ready!</button>
-                  <p class="game-message game-message--two"></p>
             </div>
+            <p class="game-message game-message--two"></p>
         </div>
         </div>
     </div>
@@ -106,7 +105,7 @@
             the stamina, the worse they become.  They are also affected by the fighter's 
             attack and defence levels. Items can add to your attack or defence level multipliers.<br><br>
             It's a draw if both players do not survive the round. <br><br>
-            Use Random choice option if you're playing by yourself.
+            If you're playing by yourself: Always use Random choice.
             <u><b>Fighter Stats:</b></u> <br><br>
             <u><b>Athlete:</b></u> Health: 100, Stamina: 150, Attack Level: 2, Defence Level: 2 <br><br>
             <u><b>Bruiser:</b></u> Health: 100, Stamina: 100, Attack Level: 4, Defence Level: 1.5<br><br>
