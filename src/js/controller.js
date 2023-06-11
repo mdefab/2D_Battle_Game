@@ -11,7 +11,6 @@ const controlStartButton = function(data){
 
 //receives move choice. todo: pass choice into model to get result of move
 const controlReadyButton = function(move){
-    console.log(move);
     const moves = model.fighterMoveResult(move);
     GameView.updatePlayerMoveMessages(moves);
     GameView.updateHealthandStamina(model.gameState.playerOne, model.gameState.playerTwo);
