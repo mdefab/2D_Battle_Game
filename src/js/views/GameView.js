@@ -13,6 +13,8 @@ class GameView {
     _readyTwo = false;
     _playerOneMoveMessage = document.querySelector('.move-player--one');
     _playerTwoMoveMessage = document.querySelector('.move-player--two');
+    _playerOneTitle = document.querySelector('.name-title--one');
+    _playerTwoTitle = document.querySelector('.name-title--two');
     _playerOneMove;
     _playerTwoMove;
 
@@ -143,7 +145,16 @@ class GameView {
     _showSelectionBox(){
         this._selectionBoxOne.classList.remove('hidden');
         this._selectionBoxTwo.classList.remove('hidden');
-    }};
+    }
+
+    addPlayerNames(playerOne, playerTwo){
+        this._playerOneTitle.innerHTML = '';
+        this._playerTwoTitle.innerHTML = '';
+        this._playerOneTitle.insertAdjacentHTML('afterbegin', `<h2>${playerOne.playerName} (${playerOne.fighterType}) </h2>`);
+        this._playerTwoTitle.insertAdjacentHTML('afterbegin', `<h2>${playerTwo.playerName} (${playerTwo.fighterType}) </h2>`);
+    }
+
+};
 
 
 export default new GameView();

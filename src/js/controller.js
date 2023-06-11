@@ -7,6 +7,7 @@ const controlStartButton = function(data){
     const gameState = model.initializeGame(data);
     GameView.updateScore(gameState.gameStats.playerOneScore, gameState.gameStats.playerTwoScore);
     GameView.updateHealthandStamina(gameState.playerOne, gameState.playerTwo);
+    GameView.addPlayerNames(gameState.playerOne, gameState.playerTwo);
 };
 
 //receives move choice. todo: pass choice into model to get result of move
