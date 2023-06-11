@@ -13,7 +13,6 @@ const controlStartButton = function(data){
 const controlReadyButton = function(move){
     console.log(move);
     const moves = model.fighterMoveResult(move);
-    model.updatedGameState();
     GameView.updatePlayerMoveMessages(moves);
     GameView.updateHealthandStamina(model.gameState.playerOne, model.gameState.playerTwo);
 }

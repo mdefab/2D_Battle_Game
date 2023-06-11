@@ -87,10 +87,4 @@ const moveValueCalculator = function(playerNumber, move){
   
 
 
-
-//model will export playerData after moves so frontend can be updated
-export const updatedGameState = function(){
-    console.log(gameState);
-}
-
 // implement a class method that the model will call to reset stats between games
