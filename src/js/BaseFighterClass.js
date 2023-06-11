@@ -25,7 +25,7 @@ class BaseFighter {
     attack(){
         const damage = this._attackLevel * this.#randomNumberGenerator() * this._stamina/100 * Number(`${this._itemsEquipped.weapon? this._itemsEquipped.weapon.attackMultiplier: 1}`);
         this.#staminaChange(-10);
-        return damage;
+        return Math.ceil(damage);
     }
 
     // returns health after damage taken
@@ -39,22 +39,28 @@ _
     //adds item to itemsEquipped list. items will be activated after taking damage and checking if still alive.
     // so model will call this method after damageTaken and isAlive methods.
     chooseItem(){
-        if(this._itemsAvailable.length === 0) return "No more items remaining!";
+        if(!this._itemsAvailable || this._itemsAvailable.length === 0){
+            return;
+        } 
         const index = Math.floor(Math.random() * (this._itemsAvailable.length))
-        const item = this._itemsAvailable.splice(index, 1)
+        let item = this._itemsAvailable.splice(index, 1)
         let name, value;
         [[name, value]] = item;
         if(name === "spear" | name === "sword" | name === "hammer"){
             this._itemsEquipped.weapon = {'name': name, 'attackMultiplier': value}
+            item = {'weapon': name, 'attackMultiplier': value};
         }
         if(name === "armour" | name === "shield"){
-            this._itemsEquipped.amour = {'name': name, 'defenceMultiplier': value}
+            this._itemsEquipped.armour = {'name': name, 'defenceMultiplier': value}
+            item = {'armour': name, 'defenceMultiplier': value};
         }
         if(name === "health"){
             this._health += value;
+            item = {'health': value};
         }
         if(name === "stamina"){
             this._stamina += value;
+            item = {'stamina': value};
         }
         return item;
     }

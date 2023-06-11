@@ -14,9 +14,6 @@ export const gameState = {
 
 };
 
-// from controller controlStartButton:
-// data = {playerOne: {'name': name, 'fighter':fighter},
-//         playerTwo: {'name': name, 'fighter':fighter},}
 
 //model will receive data, make an instance of the appropriate fighter class, and push player health/stamina status to gameState
 export const initializeGame = function(data){
@@ -40,33 +37,55 @@ const initializeFighter = function(fighter, username){
 };
 
 //todo: generate damageTaken value. determine if player is alive at end of round.
-export const fighterMoveResult = function(playerNumber, move){
+// move = {'playerOneMove': move, 'playerTwoMove':move}
+export const fighterMoveResult = function(move){
+    //playerOneMove (move.playerOneMove)
+        const playerOneValue = moveValueCalculator(1, move.playerOneMove);
+        const playerTwoValue = moveValueCalculator(2, move.playerTwoMove);
+        return {
+            'playerOneMove':playerOneValue,
+            'playerTwoMove': playerTwoValue,
+        };
+        }
+
+
+// returns object of move and value. e.g. {'sword': 1.4} or {'attack': 30}
+const moveValueCalculator = function(playerNumber, move){
     if(playerNumber === 1){
         if(move === 'attack'){
             const attackValue = gameState.playerOne.attack();
-            console.log(`player 1 attack: ${attackValue}, stamina remaining: ${gameState.playerOne.stamina}`);
+            return {'attack': attackValue};
         }else if(move ==='defend'){
-            const defend = true;
-            console.log(defend);
+            return {'defend': true}
         } else if(move ==='item'){
             const item = gameState.playerOne.chooseItem();
-            console.log(`player 1 item: ${item}`);
+             //if itemsAvailable empty, item will return undefined,
+            // game will default to defending instead
+            if(!item){
+                return {'defend': true}
+            }
+            return item;
         }
     }
     if(playerNumber === 2){
         if(move === 'attack'){
             const attackValue = gameState.playerTwo.attack();
-            console.log(`player 2 attack: ${attackValue}`);
+            return {'attack': attackValue};
         }else if(move ==='defend'){
-            const defend = true;
-            console.log(defend);
+            return {'defend': true}
         } else if(move ==='item'){
             const item = gameState.playerTwo.chooseItem();
-            console.log(`player 2 item: ${item}`);
+            //if itemsAvailable empty, item will return undefined,
+            // game will default to defending instead
+            if(!item){
+                return {'defend': true}
+            }
+            return item;
         }
-    }
-}
+    };
+    };
   
+
 
 
 //model will export playerData after moves so frontend can be updated

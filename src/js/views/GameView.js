@@ -11,11 +11,13 @@ class GameView {
     _selectionBoxTwo = document.querySelector('.selection--two');
     _readyOne = false;
     _readyTwo = false;
+    _playerOneMoveMessage = document.querySelector('.move-player--one');
+    _playerTwoMoveMessage = document.querySelector('.move-player--two');
     _playerOneMove;
     _playerTwoMove;
 
     
-    //eventlistener for ready button. todo: make select-box disappear on ready.
+    //eventlistener for ready button. passes player move choice argument to handler.
     addHandlerReadyButton(handler){
         this._readyButtonOne.addEventListener("click", function(){
             this._readyOne = true;
@@ -79,18 +81,46 @@ class GameView {
         this._vitalsPlayerTwo.insertAdjacentHTML('afterbegin', `Health: ${playerTwo.health} <br> Stamina: ${playerTwo.stamina}`);
     }
 
+    updatePlayerMoveMessages(moves){
+        this._playerOneMoveMessage.innerHTML = '';
+        this._playerTwoMoveMessage.innerHTML = '';
+        const markupOne = this._moveMarkupBuilder(moves.playerOneMove);
+        const markupTwo = this._moveMarkupBuilder(moves.playerTwoMove);
+        this._playerOneMoveMessage.insertAdjacentHTML('afterbegin', markupOne);
+        this._playerTwoMoveMessage.insertAdjacentHTML('afterbegin', markupTwo);
+    }
+
+    _moveMarkupBuilder(move){
+        if(move.health){
+            return `You picked up a health potion which increases your health by ${move.health}`;
+        }
+        if(move.stamina){
+            return `You picked up a stamina potion which increases your stamina by ${move.stamina}`;
+        }
+        if(move.armour){
+            return `You picked up a ${move.armour} which increases your defence by ${Math.round((move.defenceMultiplier - 1) * 100)} percent!`;
+        }
+        if(move.weapon){
+            return `You picked up a ${move.weapon} which increases your attack by ${Math.round((move.attackMultiplier - 1) * 100)} percent!`;
+        }
+        if(move.attack || move.attack === 0){
+            return `You dealt ${move.attack} damage`;
+        }
+        if(move.defend){
+            return `Defend! Reduced damage taken by (implement later)`;
+        }
+        else{
+            return 'Error'
+        }
+        }
+  
     //method to update fighter image
 
-
-    //method to show attack value on attack
 
 
     //method to update inventory toggle hidden class from
     // inventory depending if empty or not
 
-
-    //method to update message if waiting for a player 
-    // or no choice selected
 
 
     //Generates choice if random option is selected
@@ -114,5 +144,6 @@ class GameView {
         this._selectionBoxOne.classList.remove('hidden');
         this._selectionBoxTwo.classList.remove('hidden');
     }};
+
 
 export default new GameView();

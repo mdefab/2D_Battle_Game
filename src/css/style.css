@@ -69,11 +69,12 @@ body {
     top:5%;
 }
 
-.player-attack {
+.player-move {
     position:absolute;
     top:50%;
     z-index:2;
     max-width:20%;
+    height:30%;
     overflow: hidden;
     overflow: auto;
 }
@@ -91,12 +92,12 @@ body {
     background-color: rgb(102, 27, 27);
 }
 
-.attack-player--one,
+.move-player--one,
 .inventory-player--two {
     right: 10%;
 }
 
-.attack-player--two,
+.move-player--two,
 .inventory-player--one {
     left: 5%;
 }
