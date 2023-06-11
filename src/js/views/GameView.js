@@ -15,6 +15,8 @@ class GameView {
     _playerTwoMoveMessage = document.querySelector('.move-player--two');
     _playerOneTitle = document.querySelector('.name-title--one');
     _playerTwoTitle = document.querySelector('.name-title--two');
+    _playerOneImage = document.querySelector('.img-player--one');
+    _playerTwoImage = document.querySelector('.img-player--two');
     _playerOneMove;
     _playerTwoMove;
 
@@ -147,13 +149,32 @@ class GameView {
         this._selectionBoxTwo.classList.remove('hidden');
     }
 
-    addPlayerNames(playerOne, playerTwo){
+    _setUpPlayerNames(playerOne, playerTwo){
         this._playerOneTitle.innerHTML = '';
         this._playerTwoTitle.innerHTML = '';
         this._playerOneTitle.insertAdjacentHTML('afterbegin', `<h2>${playerOne.playerName} (${playerOne.fighterType}) </h2>`);
         this._playerTwoTitle.insertAdjacentHTML('afterbegin', `<h2>${playerTwo.playerName} (${playerTwo.fighterType}) </h2>`);
     }
 
+    _setUpaddPlayerImages(playerOne, playerTwo){
+        const widthOne = this._imageWidthSetUp(playerOne.fighterType);
+        const widthTwo = this._imageWidthSetUp(playerTwo.fighterType);
+        this._playerOneImage.style.width = `${widthOne}%`
+        this._playerTwoImage.style.width = `${widthTwo}%`
+    }
+
+    //stretches fighter image so athlete is slim and tank is the widest
+    _imageWidthSetUp(fighterType){
+        if(fighterType === 'Bruiser') return 65;
+        if(fighterType === 'Tank') return 85;
+        if(fighterType === 'Athlete') return 45;
+    }
+
+    startGame(playerOne, playerTwo){
+        this._setUpPlayerNames(playerOne, playerTwo);
+        this._setUpaddPlayerImages(playerOne, playerTwo);
+        this.updateHealthandStamina(playerOne, playerTwo);
+    }
 };
 
 
