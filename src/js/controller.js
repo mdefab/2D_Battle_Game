@@ -13,7 +13,6 @@ const controlStartButton = function(data){
 const controlReadyButton = function(moveChoices){
     const moves = model.fighterMoveResult(moveChoices);
     GameView.updatePlayerMoveMessages(moves);
-    GameView.updatePlayerMoveImages(moves);
     GameView.updateHealthandStamina(model.gameState.playerOne, model.gameState.playerTwo);
 }
 

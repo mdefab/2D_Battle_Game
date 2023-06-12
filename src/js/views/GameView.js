@@ -57,15 +57,19 @@ class GameView {
     }
 
     _getPlayerMoves(){
-            const moveOne = document.getElementById('choice-player--one').value;
-            this._playerOneMove = moveOne === "random"? this._randomMoveGenerator(): moveOne;
-            const moveTwo = document.getElementById('choice-player--two').value;
-            this._playerTwoMove = moveTwo === "random"? this._randomMoveGenerator(): moveTwo;
-
-        return {
+        const moveOne = document.getElementById('choice-player--one').value;
+        this._playerOneMove = moveOne === "random"? this._randomMoveGenerator(): moveOne;
+        const moveTwo = document.getElementById('choice-player--two').value;
+        this._playerTwoMove = moveTwo === "random"? this._randomMoveGenerator(): moveTwo;
+        
+        const moves = {
             'playerOneMove': this._playerOneMove,
             'playerTwoMove': this._playerTwoMove,
         }
+        
+        this._updatePlayerMoveImages(moves);
+
+        return moves
     }
     
 
@@ -86,6 +90,7 @@ class GameView {
         this._vitalsPlayerTwo.insertAdjacentHTML('afterbegin', `Health: ${playerTwo.health} <br> Stamina: ${playerTwo.stamina}`);
     }
 
+    //update player move message box
     updatePlayerMoveMessages(moves){
         this._playerOneMoveMessage.innerHTML = '';
         this._playerTwoMoveMessage.innerHTML = '';
@@ -93,10 +98,6 @@ class GameView {
         const markupTwo = this._moveMarkupBuilder(moves.playerTwoMove);
         this._playerOneMoveMessage.insertAdjacentHTML('afterbegin', markupOne);
         this._playerTwoMoveMessage.insertAdjacentHTML('afterbegin', markupTwo);
-    }
-
-    updatePlayerMoveImages(moves){
-        console.log(moves);
     }
 
     _moveMarkupBuilder(move){
@@ -123,9 +124,11 @@ class GameView {
         }
         }
   
-    //method to update fighter image
-
-
+    //methods to update fighter image
+    _updatePlayerMoveImages(moves){
+        this._playerOneImage.src = `./src/img/player_one_${moves.playerOneMove}.jpg`;
+        this._playerTwoImage.src = `./src/img/player_two_${moves.playerTwoMove}.jpg`;
+    }
 
     //method to update inventory toggle hidden class from
     // inventory depending if empty or not
