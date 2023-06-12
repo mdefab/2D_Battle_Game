@@ -30,11 +30,8 @@ class GameView {
                 this._gameMessageOne.insertAdjacentHTML('afterbegin', "Player 1 ready. <br> Waiting for player 2");
                 return; //other player not ready
             }
-            this._readyOne = false;
-            this._readyTwo = false;
-            this._clearMessages();
-            this._showSelectionBox();
-            const setUpData = this._getPlayerMoves();
+
+            const setUpData = this._allReadyDataSetUp();
             handler(setUpData);
         }.bind(this))
 
@@ -45,14 +42,18 @@ class GameView {
                 this._gameMessageTwo.insertAdjacentHTML('afterbegin', "Player 2 ready. <br> Waiting for player 1");
                 return; //other player not ready
             }
-            this._readyOne = false;
-            this._readyTwo = false;
-            this._clearMessages();
-            this._showSelectionBox();
-            const setUpData = this._getPlayerMoves();
 
+            const setUpData = this._allReadyDataSetUp();
             handler(setUpData);
         }.bind(this))
+    }
+
+    _allReadyDataSetUp(){
+        this._readyOne = false;
+        this._readyTwo = false;
+        this._clearMessages();
+        this._showSelectionBox();
+        return this._getPlayerMoves();
     }
 
     _getPlayerMoves(){
@@ -92,6 +93,10 @@ class GameView {
         const markupTwo = this._moveMarkupBuilder(moves.playerTwoMove);
         this._playerOneMoveMessage.insertAdjacentHTML('afterbegin', markupOne);
         this._playerTwoMoveMessage.insertAdjacentHTML('afterbegin', markupTwo);
+    }
+
+    updatePlayerMoveImages(moves){
+        console.log(moves);
     }
 
     _moveMarkupBuilder(move){
@@ -156,7 +161,7 @@ class GameView {
         this._playerTwoTitle.insertAdjacentHTML('afterbegin', `<h2>${playerTwo.playerName} (${playerTwo.fighterType}) </h2>`);
     }
 
-    _setUpaddPlayerImages(playerOne, playerTwo){
+    _setUpPlayerImages(playerOne, playerTwo){
         const widthOne = this._imageWidthSetUp(playerOne.fighterType);
         const widthTwo = this._imageWidthSetUp(playerTwo.fighterType);
         this._playerOneImage.style.width = `${widthOne}%`
@@ -172,7 +177,7 @@ class GameView {
 
     startGame(playerOne, playerTwo){
         this._setUpPlayerNames(playerOne, playerTwo);
-        this._setUpaddPlayerImages(playerOne, playerTwo);
+        this._setUpPlayerImages(playerOne, playerTwo);
         this.updateHealthandStamina(playerOne, playerTwo);
     }
 };

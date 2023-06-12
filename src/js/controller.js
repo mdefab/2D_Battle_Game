@@ -10,16 +10,16 @@ const controlStartButton = function(data){
 };
 
 //receives move choice. todo: pass choice into model to get result of move
-const controlReadyButton = function(move){
-    const moves = model.fighterMoveResult(move);
+const controlReadyButton = function(moveChoices){
+    const moves = model.fighterMoveResult(moveChoices);
     GameView.updatePlayerMoveMessages(moves);
+    GameView.updatePlayerMoveImages(moves);
     GameView.updateHealthandStamina(model.gameState.playerOne, model.gameState.playerTwo);
 }
 
 const init = function(){
     FighterMenuView.addHandlerStartButton(controlStartButton);
     GameView.addHandlerReadyButton(controlReadyButton);
-    
 };
 
 init();
