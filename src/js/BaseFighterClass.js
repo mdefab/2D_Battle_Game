@@ -19,13 +19,13 @@ class BaseFighter {
     //returns damage
     attack(){
         const damage = this._attackLevel * this.#randomNumberGenerator() * this._stamina/100 * Number(`${this._itemsEquipped.weapon? this._itemsEquipped.weapon.attackMultiplier: 1}`);
-        this.#staminaChange(-10);
+        this.stamina = -10;
         return Math.ceil(damage);
     }
 
     // returns health after damage taken
     #defend(damage){
-        this.#staminaChange(10);
+        this.stamina = 20;
         const defence = this._defenceLevel * this.#randomNumberGenerator() * this._stamina/100 * Number(`${this._itemsEquipped.armour? this._itemsEquipped.armour.defenceMultiplier: 1}`);
         const damaged = damage - defence;
         return damaged <= 0? this._health: this._health -= damaged;
@@ -54,7 +54,7 @@ _
             item = {'health': value};
         }
         if(name === "stamina"){
-            this._stamina += value;
+            this.stamina = value;
             item = {'stamina': value};
         }
         return item;
@@ -66,11 +66,6 @@ _
         }else {
           return this._health -= damage;
         }
-    }
-
-    #staminaChange(number){
-        this._stamina += number
-        return this._stamina
     }
 
     #randomNumberGenerator(){
@@ -85,6 +80,11 @@ _
 
     get health(){
         return this._health;
+    }
+
+    set stamina(value){
+        const newStamina = this._stamina + value;
+        newStamina >= 0? this._stamina = newStamina: this._stamina = 0;
     }
 
     get stamina(){
