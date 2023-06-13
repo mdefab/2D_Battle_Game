@@ -37,11 +37,35 @@ const initializeFighter = function(fighter, username){
 };
 
 //todo: generate damageTaken value. determine if player is alive at end of round.
-// move = {'playerOneMove': move, 'playerTwoMove':move}
+
+
 export const fighterMoveResult = function(move){
     //playerOneMove (move.playerOneMove)
         const playerOneValue = moveValueCalculator(1, move.playerOneMove);
         const playerTwoValue = moveValueCalculator(2, move.playerTwoMove);
+        //connect result of moves on each other.
+        // 1) playerOne attack and playerTwo defend
+        if((playerOneValue.attack || playerOneValue.attack === 0) && playerTwoValue.defend){
+            const damageTakenTwo = gameState.playerTwo.damageTaken(playerOneValue.attack, playerTwoValue.defend);
+            console.log(`player Two defended against ${playerOneValue.attack - damageTakenTwo} damage and took ${damageTakenTwo} damage`);
+        }
+
+        //2) playerOne attack and playerTwo attack or pick up item
+        if(playerOneValue.attack && (playerTwoValue.attack || playerTwoValue.item)){
+            const damageTakenTwo = gameState.playerTwo.damageTaken(playerOneValue.attack);
+            console.log(`player Two took ${damageTakenTwo} damage`);
+        }
+        // 3) playerTwo attack and playerOne defend
+        if((playerTwoValue.attack || playerTwoValue.attack === 0) && playerOneValue.defend){
+            const damageTakenOne = gameState.playerOne.damageTaken(playerTwoValue.attack, playerOneValue.defend);
+            console.log(`player One defended against ${playerTwoValue.attack - damageTakenOne} damage and took ${damageTakenOne} damage`);
+        }
+        //4) playerTwo attack and playerOne attack or pick up item
+        if(playerTwoValue.attack && (playerOneValue.attack || playerOneValue.item)){
+            const damageTakenOne = gameState.playerOne.damageTaken(playerTwoValue.attack);
+            console.log(`player One took ${damageTakenOne} damage`);
+        }
+
         return {
             'playerOneMove':playerOneValue,
             'playerTwoMove': playerTwoValue,

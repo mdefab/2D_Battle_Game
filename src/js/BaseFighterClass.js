@@ -23,16 +23,15 @@ class BaseFighter {
         return Math.ceil(damage);
     }
 
-    // returns health after damage taken
+    // returns damage taken after defence
     #defend(damage){
         this.stamina = 20;
         const defence = this._defenceLevel * this.#randomNumberGenerator() * this._stamina/100 * Number(`${this._itemsEquipped.armour? this._itemsEquipped.armour.defenceMultiplier: 1}`);
         const damaged = damage - defence;
-        return damaged <= 0? this._health: this._health -= damaged;
+        return damaged > 0? Math.round(damaged): 0;
     }
 _
-    //adds item to itemsEquipped list. items will be activated after taking damage and checking if still alive.
-    // so model will call this method after damageTaken and isAlive methods.
+    //adds item to itemsEquipped list.
     chooseItem(){
         if(!this._itemsAvailable || this._itemsAvailable.length === 0){
             return;
@@ -50,7 +49,7 @@ _
             item = {'armour': name, 'defenceMultiplier': value};
         }
         if(name === "health"){
-            this._health += value;
+            this.health = value;
             item = {'health': value};
         }
         if(name === "stamina"){
@@ -60,14 +59,16 @@ _
         return item;
     }
     // returns health after damage taken
-    damageTaken(damage, defend){
+    damageTaken(damage, defend=false){
         if(defend === true){
-            return this.#defend(damage)
+            const damageAfterDefence = this.#defend(damage);
+            return this.health = -damageAfterDefence;
         }else {
-          return this._health -= damage;
+          return this.health = -damage;
         }
     }
 
+    //generates random number between 1 and 10.
     #randomNumberGenerator(){
         return Math.floor(Math.random() * 11);
     }
@@ -76,6 +77,11 @@ _
     get alive(){
         if(this._health <= 0) return false
         return true
+    }
+
+    set health(value){
+        const newHealth = this._health + value;
+        newHealth >= 0? this._health = newHealth: this._health = 0;
     }
 
     get health(){
