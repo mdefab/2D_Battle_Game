@@ -47,7 +47,7 @@ export const fighterMoveResult = function(move){
         // 1) playerOne attack and playerTwo defend
         if((playerOneValue.attack || playerOneValue.attack === 0) && playerTwoValue.defend){
             const damageTakenTwo = gameState.playerTwo.damageTaken(playerOneValue.attack, playerTwoValue.defend);
-            console.log(`player Two defended against ${playerOneValue.attack - damageTakenTwo} damage and took ${damageTakenTwo} damage`);
+            console.log(`player Two stopped ${playerOneValue.attack - damageTakenTwo} damage and took ${damageTakenTwo} damage`);
         }
 
         //2) playerOne attack and playerTwo attack or pick up item
@@ -58,7 +58,7 @@ export const fighterMoveResult = function(move){
         // 3) playerTwo attack and playerOne defend
         if((playerTwoValue.attack || playerTwoValue.attack === 0) && playerOneValue.defend){
             const damageTakenOne = gameState.playerOne.damageTaken(playerTwoValue.attack, playerOneValue.defend);
-            console.log(`player One defended against ${playerTwoValue.attack - damageTakenOne} damage and took ${damageTakenOne} damage`);
+            console.log(`player One stopped ${playerTwoValue.attack - damageTakenOne} damage and took ${damageTakenOne} damage`);
         }
         //4) playerTwo attack and playerOne attack or pick up item
         if(playerTwoValue.attack && (playerOneValue.attack || playerOneValue.item)){

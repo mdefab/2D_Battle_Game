@@ -89,15 +89,30 @@ body {
 
 .player-inventory {
     position:absolute;
+    display:flex;
+    flex-direction:column;
     bottom:20%;
     background-color: rgb(151, 39, 39);
     padding:1rem;
     border-radius:10px;
+    max-height:50%;
+    max-width:20%;
+    overflow:hidden;
 }
 
 .equipped-items {
     display:flex;
     background-color: rgb(102, 27, 27);
+    width: 6rem;
+    height:7rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.img-equipped{
+    object-fit: contain;
+    max-width: 80%;
+    height:auto;
 }
 
 .move-player--one {

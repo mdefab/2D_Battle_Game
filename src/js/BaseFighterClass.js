@@ -62,9 +62,11 @@ _
     damageTaken(damage, defend=false){
         if(defend === true){
             const damageAfterDefence = this.#defend(damage);
-            return this.health = -damageAfterDefence;
+            this.health = -damageAfterDefence;
+            return damageAfterDefence
         }else {
-          return this.health = -damage;
+          this.health = -damage;
+          return damage;
         }
     }
 

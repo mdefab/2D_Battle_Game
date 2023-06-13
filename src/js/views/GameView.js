@@ -20,6 +20,8 @@ class GameView {
     _playerTwoTitle = document.querySelector('.name-title--two');
     _playerOneImage = document.querySelector('.img-player--one');
     _playerTwoImage = document.querySelector('.img-player--two');
+    _playerOneInventory = document.querySelector('.inventory-player--one');
+    _playerTwoInventory = document.querySelector('.inventory-player--two');
     _playerOneMove;
     _playerTwoMove;
 
@@ -74,8 +76,6 @@ class GameView {
 
         return moves
     }
-    
-
 
     //method to update score on page. Should be called at start and after each game.
     updateScore(playerOneScore, playerTwoScore){
@@ -85,13 +85,38 @@ class GameView {
         this._scorePlayerTwo.insertAdjacentHTML('afterbegin',`Score: ${playerTwoScore}`);
     }
     
-    //method to update health/stamina between rounds
-    updateHealthandStamina(playerOne, playerTwo){
+    //method to update health/stamina/inventory between rounds
+    updatePlayerData(playerOne, playerTwo){
         this._vitalsPlayerOne.innerHTML = '';
         this._vitalsPlayerTwo.innerHTML = '';
         this._vitalsPlayerOne.insertAdjacentHTML('afterbegin', `Health: ${playerOne.health} <br> Stamina: ${playerOne.stamina}`);
         this._vitalsPlayerTwo.insertAdjacentHTML('afterbegin', `Health: ${playerTwo.health} <br> Stamina: ${playerTwo.stamina}`);
+
+        // Use Object.keys(itemsEquipped) to get keys into an array from itemsEquipped object so you can iterate through it
+        if(Object.keys(playerOne.itemsEquipped) && Object.keys(playerOne.itemsEquipped).length > 0){
+            this._playerOneInventory.classList.remove('hidden');
+            this._playerOneInventory.innerHTML = '';
+
+            Object.keys(playerOne.itemsEquipped).forEach(item => {
+                const markUpOne = `<div class="equipped-items equipped-items--one"><img class="img-equipped img-equipped--one" 
+            src="./src/img/${playerOne.itemsEquipped[item]["name"]}.jpg" alt="${playerOne.itemsEquipped[item]["name"]} image"></div>`;
+            this._playerOneInventory.insertAdjacentHTML('beforeend', markUpOne)
+            });
+        }
+        if(Object.keys(playerTwo.itemsEquipped) && Object.keys(playerTwo.itemsEquipped).length > 0){
+            this._playerTwoInventory.classList.remove('hidden');
+            this._playerTwoInventory.innerHTML = '';
+
+            Object.keys(playerTwo.itemsEquipped).forEach(item => {
+                const markUpTwo = `<div class="equipped-items equipped-items--two"><img class="img-equipped img-equipped--two" 
+            src="./src/img/${playerTwo.itemsEquipped[item]["name"]}.jpg" alt="${playerTwo.itemsEquipped[item]["name"]} image"></div>`;
+            this._playerTwoInventory.insertAdjacentHTML('beforeend', markUpTwo)
+            });
+            
+        }
     }
+
+    // `./src/img/player_one_${moves.playerOneMove}.jpg`
 
     //update player move message box
     updatePlayerMoveMessages(moves){
@@ -133,11 +158,6 @@ class GameView {
         this._playerTwoImage.src = `./src/img/player_two_${moves.playerTwoMove}.jpg`;
     }
 
-    //method to update inventory toggle hidden class from
-    // inventory depending if empty or not
-
-
-
     //Generates choice if random option is selected
     _randomMoveGenerator(){
         const selectOptions = document.querySelectorAll('.choice-player--one');
@@ -146,7 +166,6 @@ class GameView {
         const move = moveOptions[index]
         return move
     }
-
 
     //clear ready up messages, if any
     _clearMessages(){
@@ -184,7 +203,7 @@ class GameView {
     startGame(playerOne, playerTwo){
         this._setUpPlayerNames(playerOne, playerTwo);
         this._setUpPlayerImages(playerOne, playerTwo);
-        this.updateHealthandStamina(playerOne, playerTwo);
+        this.updatePlayerData(playerOne, playerTwo);
     }
 };
 
