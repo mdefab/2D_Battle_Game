@@ -79,6 +79,7 @@ body {
     height:50%;
     overflow: hidden;
     overflow: auto;
+    font-weight:700;
 }
 
 .selection-box {
