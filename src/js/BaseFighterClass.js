@@ -12,11 +12,6 @@ class BaseFighter {
         this.playerName = playerName;
     }
 
-    //returns string on ready 
-    ready() {
-        return `${this.playerName} ready. ${this._fighterType} selected!`;
-    }
-
     //returns string to add on attack
     warCry(){
         return this._attackMessage;
@@ -81,6 +76,7 @@ _
     #randomNumberGenerator(){
         return Math.floor(Math.random() * 11);
     }
+
 
     get alive(){
         if(this._health <= 0) return false

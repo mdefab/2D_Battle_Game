@@ -32,6 +32,7 @@ body {
 
 .game-container {
     display: flex;
+    width:97vw;
 }
 
 .player-container {
@@ -72,16 +73,21 @@ body {
 .player-move {
     position:absolute;
     top:40%;
-    z-index:2;
+    z-index:10;
     max-width:20%;
     height:50%;
     overflow: hidden;
     overflow: auto;
 }
 
+.selection-box {
+    z-index:20;
+    position:relative;
+}
+
 .player-inventory {
     position:absolute;
-    top:50%;
+    bottom:20%;
     background-color: rgb(151, 39, 39);
     padding:1rem;
     border-radius:10px;
@@ -92,12 +98,20 @@ body {
     background-color: rgb(102, 27, 27);
 }
 
-.move-player--one,
-.inventory-player--two {
-    right: 10%;
+.move-player--one {
+    color:blue;
+    right: 5%;
 }
 
-.move-player--two,
+.move-player--two {
+    color:red;
+    left: 5%;
+}
+
+.inventory-player--two {
+    right: 5%;
+}
+
 .inventory-player--one {
     left: 5%;
 }

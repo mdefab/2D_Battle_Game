@@ -1,3 +1,6 @@
+//todo: eventListener for key pressing options instead of selecting with mouse so your move is
+//kept secret.
+
 class GameView {
     _scorePlayerOne = document.querySelector('.score-player--one');
     _scorePlayerTwo = document.querySelector('.score-player--two');
