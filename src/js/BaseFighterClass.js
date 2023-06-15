@@ -56,7 +56,8 @@ _
             this.stamina = value;
             item = {'stamina': value};
         }
-        return item;
+        return {...item,
+            'item': true} ;
     }
     // returns health after damage taken
     damageTaken(damage, defend=false){

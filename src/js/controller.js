@@ -12,7 +12,7 @@ const controlStartButton = function(data){
 //receives move choice. todo: pass choice into model to get result of move
 const controlReadyButton = function(moveChoices){
     const moves = model.fighterMoveResult(moveChoices);
-    GameView.updatePlayerMoveMessages(moves);
+    GameView.updatePlayerMoveandImageMessages(moves);
     GameView.updatePlayerData(model.gameState.playerOne, model.gameState.playerTwo);
 }
 

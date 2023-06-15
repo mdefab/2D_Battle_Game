@@ -1,6 +1,5 @@
 //todo: eventListener for key pressing options instead of selecting with mouse so your move is
 //kept secret.
-
 class GameView {
     _scorePlayerOne = document.querySelector('.score-player--one');
     _scorePlayerTwo = document.querySelector('.score-player--two');
@@ -71,8 +70,6 @@ class GameView {
             'playerOneMove': this._playerOneMove,
             'playerTwoMove': this._playerTwoMove,
         }
-        
-        this._updatePlayerMoveImages(moves);
 
         return moves
     }
@@ -119,21 +116,23 @@ class GameView {
     // `./src/img/player_one_${moves.playerOneMove}.jpg`
 
     //update player move message box
-    updatePlayerMoveMessages(moves){
+    updatePlayerMoveandImageMessages(moves){
+        console.log(moves);
         this._playerOneMoveMessage.innerHTML = '';
         this._playerTwoMoveMessage.innerHTML = '';
         const markupOne = this._moveMarkupBuilder(moves.playerOneMove);
         const markupTwo = this._moveMarkupBuilder(moves.playerTwoMove);
         this._playerOneMoveMessage.insertAdjacentHTML('afterbegin', markupOne);
         this._playerTwoMoveMessage.insertAdjacentHTML('afterbegin', markupTwo);
+        this._updatePlayerMoveImages(moves);
     }
 
     _moveMarkupBuilder(move){
         if(move.health){
-            return `You picked up a health potion which increases your health by ${move.health}`;
+            return `Health potion: Health+ ${move.health}`;
         }
         if(move.stamina){
-            return `You picked up a stamina potion which increases your stamina by ${move.stamina}`;
+            return `Stamina potion: Stamina +${move.stamina}`;
         }
         if(move.armour){
             return `You picked up a ${move.armour} which increases your defence by ${Math.round((move.defenceMultiplier - 1) * 100)} percent!`;
@@ -142,7 +141,7 @@ class GameView {
             return `You picked up a ${move.weapon} which increases your attack by ${Math.round((move.attackMultiplier - 1) * 100)} percent!`;
         }
         if(move.attack || move.attack === 0){
-            return `You dealt ${move.attack} damage`;
+            return `Attack! ${move.attack} damage`;
         }
         if(move.defend){
             return `Defended! +20 Stamina`;
@@ -154,8 +153,8 @@ class GameView {
   
     //methods to update fighter image
     _updatePlayerMoveImages(moves){
-        this._playerOneImage.src = `./src/img/player_one_${moves.playerOneMove}.jpg`;
-        this._playerTwoImage.src = `./src/img/player_two_${moves.playerTwoMove}.jpg`;
+        this._playerOneImage.src = `./src/img/player_one_${moves.playerOneMove.move}.jpg`;
+        this._playerTwoImage.src = `./src/img/player_two_${moves.playerTwoMove.move}.jpg`;
     }
 
     //Generates choice if random option is selected

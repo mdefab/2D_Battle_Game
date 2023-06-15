@@ -40,14 +40,12 @@ const initializeFighter = function(fighter, username){
 
 
 export const fighterMoveResult = function(move){
-    //playerOneMove (move.playerOneMove)
+        //player move values:
         const playerOneValue = moveValueCalculator(1, move.playerOneMove);
         const playerTwoValue = moveValueCalculator(2, move.playerTwoMove);
-        //connect result of moves on each other.
+        //connect player moves to eachother:
 
         // 1) playerOne attack and playerTwo defend
-        console.log(playerOneValue);
-        console.log(playerTwoValue);
         if((playerOneValue.attack || playerOneValue.attack === 0) && playerTwoValue.defend){
             const damageTakenTwo = gameState.playerTwo.damageTaken(playerOneValue.attack, playerTwoValue.defend);
             console.log(`player Two stopped ${playerOneValue.attack - damageTakenTwo} damage and took ${damageTakenTwo} damage`);
@@ -80,12 +78,21 @@ export const fighterMoveResult = function(move){
         }
 
         //6) Both players defend
+        if(playerOneValue.defend && playerTwoValue.defend){
+            gameState.playerOne.damageTaken(0, playerOneValue.defend);
+            gameState.playerTwo.damageTaken(0, playerTwoValue.defend);
+        }
     
         // 7) PlayerOne defend and playerTwo item
+        if(playerOneValue.defend && playerTwoValue.item){
+            gameState.playerOne.damageTaken(0, playerOneValue.defend);
+        }
 
         //8) PlayerTwo defend and playerOne item
-
-        //Note: There is no Item vs Item because players do not affect each other and items applied automatically
+        if(playerTwoValue.defend && playerOneValue.item){
+            gameState.playerTwo.damageTaken(0, playerTwoValue.defend);
+        }
+        //There is no Item vs Item because players do not affect each other and items are applied automatically
         return {
             'playerOneMove':playerOneValue,
             'playerTwoMove': playerTwoValue,
@@ -98,33 +105,41 @@ const moveValueCalculator = function(playerNumber, move){
     if(playerNumber === 1){
         if(move === 'attack'){
             const attackValue = gameState.playerOne.attack();
-            return {'attack': attackValue};
+            return {'attack': attackValue,
+                    'move': 'attack'};
         }else if(move ==='defend'){
-            return {'defend': true}
+            return {'defend': true,
+                    'move': 'defend'}
         } else if(move ==='item'){
             const item = gameState.playerOne.chooseItem();
              //if itemsAvailable empty, item will return undefined,
             // game will default to defending instead
             if(!item){
-                return {'defend': true}
+                return {'defend': true,
+                        'move': 'defend'}
             }
-            return item;
+            return {...item,
+                    'move': 'item'};
         }
     }
     if(playerNumber === 2){
         if(move === 'attack'){
             const attackValue = gameState.playerTwo.attack();
-            return {'attack': attackValue};
+            return {'attack': attackValue,
+                    'move': 'attack'};
         }else if(move ==='defend'){
-            return {'defend': true}
+            return {'defend': true,
+                    'move': 'defend'}
         } else if(move ==='item'){
             const item = gameState.playerTwo.chooseItem();
             //if itemsAvailable empty, item will return undefined,
             // game will default to defending instead
             if(!item){
-                return {'defend': true}
+                return {'defend': true,
+                'move': 'defend'}
             }
-            return item;
+            return {...item,
+                'move': 'item'};
         }
     };
     };
