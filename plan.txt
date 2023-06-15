@@ -1,0 +1,42 @@
+player name gets inserted after user inputs username 
++ will also indicate fighter choice 
+e.g. Michael - Tank , 
+Nicholas - Bruiser, 
+Carl - Athlete
+
+player attack, defence, health, stamina stats will be affected by fighter choice
+Tank - high defence, high health, low attack, average stamina
+Bruiser - average defence, average health, high attack, average stamina
+Athlete - average defence, average health, average attack, high stamina
+
+Show an inventory box with items that are equipped.
+Make stamina and health potions provide random amounts of restoration ranging from +10-50.
+No defence when reaching for item
+
+view listens for new game -> controller function passed as a handler into that listener and calls
+model to update a new game with updated gameState depending on player choice
+reset and new game buttons
+
+keypress to bring up menu: perhaps esc
+
+
+TODO:
+ - make menu and overlay disappear after both users click ready [DONE]
+ - implement guide button so guide appears on click and closes on click of
+    close button. [DONE]
+    add guide info: should show fighter stats plus explanation of game[DONE]
+-guide will have highest z-index. change overlay z-index to be higher than game-menu when guide is open [DONE]
+ - implement initializing of fighter class for backend model + modify image width
+    depending on fighter choice (widest: tank, skinniest: athlete) [DONE]
+- implement gameView for tracking score/health/stamina/attack [DONE]
+ - implement tracking of items picked up and items equipped in GameView (inventory images) [DONE]
+- implement game logic with death on health = 0 [DONE]
+
+- implement post-game screen: victor/defeat text, score update, menu with fight again (resets fighter health/stamina/itemsEquipped/itemsAvailable but keeps score... perhaps new instance of class btn rounds to reset this data),
+ reset button (window.location.reload()) for full refresh, button to change fighter choice before starting next round, but maintains game stats.
+
+Bonus:
+- add new fighters for friends and myself
+- add feature to select 1 or 2p and if 1p game, computer player auto chooses random choice.
+- add feature to be able to press keys instead of selecting with mouse so move choice is anonymous (e.g. player 1 is wasd and player 2 is ijkl)
+- add feature to change from ready to unready status if other player hasn't gone yet
