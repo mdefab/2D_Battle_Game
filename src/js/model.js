@@ -10,6 +10,9 @@ export const gameState = {
     'gameStats': {
         'playerOneScore': 0,
         'playerTwoScore': 0,
+        'gameOver': false,
+        'endGameMessageOne': '',
+        'endGameMessageTwo': '',
     },
 
 };
@@ -144,6 +147,36 @@ const moveValueCalculator = function(playerNumber, move){
     };
     };
   
+
+//gets life status between rounds
+export const gameStatus = function(){
+    //both players alive - no change to gameStats
+    
+    //player one alive, player two dead
+    if(gameState.playerOne.alive && !gameState.playerTwo.alive){
+        gameState.gameStats.playerOneScore += 1;
+        gameState.gameStats.gameOver = true;
+        gameState.gameStats.endGameMessageOne = 'Victor!';
+        gameState.gameStats.endGameMessageTwo = 'Defeat';
+    }
+   
+    //player two alive, player one dead
+    if(gameState.playerTwo.alive && !gameState.playerOne.alive){
+        gameState.gameStats.playerTwoScore += 1;
+        gameState.gameStats.gameOver = true;
+        gameState.gameStats.endGameMessageOne = 'Defeat';
+        gameState.gameStats.endGameMessageTwo = 'Victor!';
+    }
+
+    // both players dead
+    if(!gameState.playerOne.alive && !gameState.playerTwo.alive){
+        gameState.gameStats.gameOver = true;
+        gameState.gameStats.endGameMessageOne = 'Draw';
+        gameState.gameStats.endGameMessageTwo = 'Draw';
+    }
+
+    return gameState.gameStats;
+};
 
 
 // implement a class method that the model will call to reset stats between games

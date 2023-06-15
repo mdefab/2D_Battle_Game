@@ -14,6 +14,10 @@ const controlReadyButton = function(moveChoices){
     const moves = model.fighterMoveResult(moveChoices);
     GameView.updatePlayerMoveandImageMessages(moves);
     GameView.updatePlayerData(model.gameState.playerOne, model.gameState.playerTwo);
+    const gameStatus = model.gameStatus();
+    if(gameStatus.gameOver){
+        console.log("Game Over!", gameStatus)
+    };
 }
 
 const init = function(){

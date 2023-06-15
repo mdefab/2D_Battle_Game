@@ -24,7 +24,12 @@ class GameView {
     _playerOneMove;
     _playerTwoMove;
 
-    
+    startGame(playerOne, playerTwo){
+        this._setUpPlayerNames(playerOne, playerTwo);
+        this._setUpPlayerImages(playerOne, playerTwo);
+        this.updatePlayerData(playerOne, playerTwo);
+    }
+
     //eventlistener for ready button. passes player move choice argument to handler.
     addHandlerReadyButton(handler){
         this._readyButtonOne.addEventListener("click", function(){
@@ -198,11 +203,6 @@ class GameView {
         if(fighterType === 'Athlete') return 45;
     }
 
-    startGame(playerOne, playerTwo){
-        this._setUpPlayerNames(playerOne, playerTwo);
-        this._setUpPlayerImages(playerOne, playerTwo);
-        this.updatePlayerData(playerOne, playerTwo);
-    }
 };
 
 
