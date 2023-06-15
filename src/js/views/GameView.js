@@ -117,7 +117,6 @@ class GameView {
 
     //update player move message box
     updatePlayerMoveandImageMessages(moves){
-        console.log(moves);
         this._playerOneMoveMessage.innerHTML = '';
         this._playerTwoMoveMessage.innerHTML = '';
         const markupOne = this._moveMarkupBuilder(moves.playerOneMove);

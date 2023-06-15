@@ -3,7 +3,7 @@ import BaseFighter from "./BaseFighterClass.js";
 class TankFighter extends BaseFighter {
     _health = 200;
     _stamina = 100;
-    _attackLevel = 1.5;
+    _attackLevel = 3;
     _defenceLevel = 4;
     _itemsAvailable = [['hammer', 1.4], ['health', 10], ['health', 20],
     ['health', 30], ['health', 40], ['health', 50], ['stamina', 20],
