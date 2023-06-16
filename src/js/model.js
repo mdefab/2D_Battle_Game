@@ -183,5 +183,9 @@ export const gameStatus = function(){
     return gameState.gameStats;
 };
 
+export const roundReset = function(){
+    gameState.gameStats.gameOver = false;
+};
+
 
 // implement a class method that the model will call to reset stats between games

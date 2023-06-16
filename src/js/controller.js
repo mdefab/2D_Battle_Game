@@ -24,11 +24,12 @@ const controlReadyButton = function(moveChoices){
 
 const controlRematchButton = function(){
     //username and fighter choice staying the same, just resetting vitals and equipment lists.
-    console.log("rematch pressed");
     const oldData = {
         "playerOne": {"name": model.gameState.playerOne.playerName, "fighter": model.gameState.playerOne.fighterType},
         "playerTwo":{"name": model.gameState.playerTwo.playerName, "fighter": model.gameState.playerTwo.fighterType},
     };
+    //change model.gameState.gameStats.gameOver back to false.
+    model.roundReset();
     // create new instance of fighter class to achieve the reset
     controlStart(oldData);
 
