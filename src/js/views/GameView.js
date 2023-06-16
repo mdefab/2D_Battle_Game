@@ -148,7 +148,7 @@ class GameView {
             return `Attack! ${move.attack} damage`;
         }
         if(move.defend){
-            return `Defended! +20 Stamina`;
+            return `Defend!`;
         }
         else{
             return 'Error'

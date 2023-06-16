@@ -231,6 +231,21 @@ body {
     transform: translateY(-50%) rotate(-45deg);
 }
 
+.game-over-menu {
+    position:fixed;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+    color: black;
+    background-color: var(--light-grey);
+    border: solid black;
+    text-align: center;
+    width: fit-content;
+    padding: 2rem;
+    box-shadow: 0 4rem 6rem rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+}
+
 .overlay {
     position: fixed;
     top: 0;
