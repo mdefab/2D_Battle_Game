@@ -11,8 +11,6 @@ class GameView {
     _gameMessageTwo = document.querySelector('.game-message--two');
     _selectionBoxOne = document.querySelector('.selection--one');
     _selectionBoxTwo = document.querySelector('.selection--two');
-    _readyOne = false;
-    _readyTwo = false;
     _playerOneMoveMessage = document.querySelector('.move-player--one');
     _playerTwoMoveMessage = document.querySelector('.move-player--two');
     _playerOneTitle = document.querySelector('.name-title--one');
@@ -23,6 +21,8 @@ class GameView {
     _playerTwoInventory = document.querySelector('.inventory-player--two');
     _playerOneMove;
     _playerTwoMove;
+    _readyOne = false;
+    _readyTwo = false;
 
     startGame(playerOne, playerTwo){
         this._setUpPlayerNames(playerOne, playerTwo);
@@ -179,6 +179,14 @@ class GameView {
     _clearMoveMessages(){
         this._playerOneMoveMessage.innerHTML = '';
         this._playerTwoMoveMessage.innerHTML = '';
+    }
+
+    _clearInventoryImages(){
+        this._playerTwoInventory.innerHTML = '';
+        this._playerOneInventory.innerHTML = '';
+        this._playerTwoInventory.classList.add('hidden');
+        this._playerOneInventory.classList.add('hidden');
+        
     }
 
     //bring selection box back after hiding on ready

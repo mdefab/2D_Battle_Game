@@ -185,6 +185,8 @@ export const gameStatus = function(){
 
 export const roundReset = function(){
     gameState.gameStats.gameOver = false;
+    gameState.gameStats.endGameMessageOne = '';
+    gameState.gameStats.endGameMessageTwo = '';
 };
 
 
