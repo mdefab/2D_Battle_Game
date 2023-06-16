@@ -1,5 +1,6 @@
 import FighterMenuView from "./views/FighterMenuView.js";
 import GameView from "./views/GameView.js";
+import GameOver from "./views/GameOverView.js"
 import * as model from "./model.js";
 
 
@@ -16,7 +17,8 @@ const controlReadyButton = function(moveChoices){
     GameView.updatePlayerData(model.gameState.playerOne, model.gameState.playerTwo);
     const gameStatus = model.gameStatus();
     if(gameStatus.gameOver){
-        console.log("Game Over!", gameStatus)
+        console.log("Game Over!", gameStatus);
+        GameOver.gameOverMessages(gameStatus);
     };
 }
 
