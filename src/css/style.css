@@ -47,30 +47,30 @@ body {
     position: relative;
 }
 
+.player--one {
+    color:blue;
+}
+
+.player--two {
+    color:red;
+}
+
 .player-container h2 {
     font-size: 2rem;
-}
-
-.player-one,
-.end-game-message--one {
-    color: blue;
-}
-
-.player-two,
-.end-game-message--two {
-    color: red;
 }
 
 .player-score {
     position: absolute;
     right:10%;
     top:5%;
+    z-index:200;
 }
 
 .player-vitals {
     position:absolute;
     left:5%;
     top:5%;
+    z-index:200;
 }
 
 .player-move {
@@ -118,12 +118,10 @@ body {
 }
 
 .move-player--one {
-    color:blue;
     right: 5%;
 }
 
 .move-player--two {
-    color:red;
     left: 5%;
 }
 
