@@ -54,10 +54,8 @@ export const fighterMoveResult = function(move){
             const playerTwoMessage = `player Two stopped ${playerOneValue.attack - damageTakenTwo} out of ${playerOneValue.attack} damage taken`;
             return {
                 'playerOneMove':playerOneValue,
-                'playerTwoMove': {...playerTwoValue,'playerTwoMessage': playerTwoMessage}
+                'playerTwoMove': {...playerTwoValue,'playerTwoMessage': playerTwoMessage}};   
         };
-           
-        }
 
         // 2) playerTwo attack and playerOne defend
         if((playerTwoValue.attack || playerTwoValue.attack === 0) && playerOneValue.defend){
@@ -65,10 +63,8 @@ export const fighterMoveResult = function(move){
             const playerOneMessage = `player One stopped ${playerTwoValue.attack - damageTakenOne} out of ${playerTwoValue.attack} damage taken`;
             return {
                 'playerOneMove':{...playerOneValue,'playerOneMessage': playerOneMessage},
-                'playerTwoMove':playerTwoValue,
-            }
+                'playerTwoMove':playerTwoValue};
         };
-
 
         //3) both players attack
         if((playerOneValue.attack || playerOneValue.attack === 0) && (playerTwoValue.attack || playerTwoValue.attack === 0)){
@@ -189,5 +185,3 @@ export const roundReset = function(){
     gameState.gameStats.endGameMessageTwo = '';
 };
 
-
-// implement a class method that the model will call to reset stats between games
