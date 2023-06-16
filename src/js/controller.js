@@ -15,10 +15,10 @@ const controlReadyButton = function(moveChoices){
     const moves = model.fighterMoveResult(moveChoices);
     GameView.updatePlayerMoveandImageMessages(moves);
     GameView.updatePlayerData(model.gameState.playerOne, model.gameState.playerTwo);
-    const gameStatus = model.gameStatus();
-    if(gameStatus.gameOver){
-        console.log("Game Over!", gameStatus);
-        GameOver.gameOverMessages(gameStatus);
+    const gameStats = model.gameStatus();
+    if(gameStats.gameOver){
+        GameView.updateScore(gameStats.playerOneScore, gameStats.playerTwoScore);
+        GameOver.gameOverMessages(gameStats);
     };
 }
 
