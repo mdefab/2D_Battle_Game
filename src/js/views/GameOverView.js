@@ -1,25 +1,17 @@
-class GameOver {
+class GameOverView {
     _endGameMessageOne = document.querySelector('.end-game-message--one');
     _endGameMessageTwo = document.querySelector('.end-game-message--two');
     _overlay = document.querySelector(".overlay");
     _gameOverMenu = document.querySelector(".game-over-menu");
+    _btnRematch = document.querySelector(".rematch");
+    _btnChange = document.querySelector(".change");
     
     
     constructor(){
         this._btnReset = document.querySelector(".reset");
-        this._btnRematch = document.querySelector(".rematch");
-        this._btnChange = document.querySelector(".change");
 
         this._btnReset.addEventListener('click', function(){
             window.location.reload();
-        })
-
-        this._btnRematch.addEventListener('click', function(){
-            console.log("rematch pressed");
-        })
-
-        this._btnChange.addEventListener('click', function(){
-            console.log("change pressed");
         })
     }
 
@@ -34,6 +26,19 @@ class GameOver {
         this._endGameMessageTwo.insertAdjacentHTML('afterbegin', gameStatus.endGameMessageTwo);
     }
 
+    addHandlerRematchButton(handler){
+        this._btnRematch.addEventListener('click', function(){
+            this._hideMenuandOverlayandEndGameMessages();
+            handler();
+        }.bind(this))
+    }
+
+    addHandlerChangeButton(handler){
+        this._btnChange.addEventListener('click', function(){
+            handler();
+        })
+    }
+
     //full reset button - reset all data - fresh start
 
     //fight again button - starts next round immediately - keeps same username/fighter/scores
@@ -43,7 +48,7 @@ class GameOver {
     // perhaps listen to esc key to bring up game over menu options
 
     //implement later:
-    _hideMenuOverlayandEndGameMessages(){
+    _hideMenuandOverlayandEndGameMessages(){
         this._endGameMessageOne.classList.add('hidden');
         this._endGameMessageTwo.classList.add('hidden');
         this._gameOverMenu.classList.add("hidden");
@@ -52,4 +57,4 @@ class GameOver {
 
 };
 
-export default new GameOver();
+export default new GameOverView();

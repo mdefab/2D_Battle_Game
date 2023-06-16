@@ -28,6 +28,7 @@ class GameView {
         this._setUpPlayerNames(playerOne, playerTwo);
         this._setUpPlayerImages(playerOne, playerTwo);
         this.updatePlayerData(playerOne, playerTwo);
+        this._clearMoveMessages();
     }
 
     //eventlistener for ready button. passes player move choice argument to handler.
@@ -122,8 +123,7 @@ class GameView {
 
     //update player move message box
     updatePlayerMoveandImageMessages(moves){
-        this._playerOneMoveMessage.innerHTML = '';
-        this._playerTwoMoveMessage.innerHTML = '';
+        this._clearMoveMessages();
         const markupOne = this._moveMarkupBuilder(moves.playerOneMove);
         const markupTwo = this._moveMarkupBuilder(moves.playerTwoMove);
         this._playerOneMoveMessage.insertAdjacentHTML('afterbegin', markupOne);
@@ -176,6 +176,11 @@ class GameView {
         this._gameMessageTwo.innerHTML = '';
     }
 
+    _clearMoveMessages(){
+        this._playerOneMoveMessage.innerHTML = '';
+        this._playerTwoMoveMessage.innerHTML = '';
+    }
+
     //bring selection box back after hiding on ready
     _showSelectionBox(){
         this._selectionBoxOne.classList.remove('hidden');
@@ -190,6 +195,8 @@ class GameView {
     }
 
     _setUpPlayerImages(playerOne, playerTwo){
+        this._playerOneImage.src = './src/img/player_one.jpg';
+        this._playerTwoImage.src = './src/img/player_two.jpg';
         const widthOne = this._imageWidthSetUp(playerOne.fighterType);
         const widthTwo = this._imageWidthSetUp(playerTwo.fighterType);
         this._playerOneImage.style.width = `${widthOne}%`

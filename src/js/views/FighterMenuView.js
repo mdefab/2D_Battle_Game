@@ -30,31 +30,6 @@ class FighterMenuView {
         })
     }
 
-//Generates fighter type if Random option is selected
-    _randomFighterGenerator(){
-        const selectOptions = document.querySelectorAll('.fighter-choice--one');
-        const fighterOptions = [...selectOptions[0].options].map(o => o.value).slice(1,)
-        const index = Math.floor(Math.random() * (fighterOptions.length))
-        const fighter = fighterOptions[index]
-        return fighter
-    }
-
-
-//Get user choices for name and fighters and returns object. Offers default naming if no username entered.
-    _getPlayerChoices(){
-        const playerOne = document.getElementById('player-name--one').value
-        this._playerOneName = playerOne? playerOne: "Player 1";
-        const playerTwo = document.getElementById('player-name--two').value;
-        this._playerTwoName = playerTwo? playerTwo: "Player 2";
-        const fighterOne = document.querySelector('.fighter-choice--one').value;
-        this._playerOneFighterChoice = fighterOne === "Random"? this._randomFighterGenerator():fighterOne;
-        const fighterTwo = document.querySelector('.fighter-choice--two').value;
-        this._playerTwoFighterChoice = fighterTwo === "Random"? this._randomFighterGenerator():fighterTwo;
-        return {
-            "playerOne": {"name": this._playerOneName, "fighter": this._playerOneFighterChoice},
-            "playerTwo":{"name": this._playerTwoName, "fighter": this._playerTwoFighterChoice},
-        };
-    }
 
 //listen for click on player one and two fight(start) buttons
     addHandlerStartButton(handler){
@@ -84,6 +59,31 @@ class FighterMenuView {
 
             handler(setUpData);
         }.bind(this))
+    }
+
+    //Get user choices for name and fighters and returns object. Offers default naming if no username entered.
+    _getPlayerChoices(){
+        const playerOne = document.getElementById('player-name--one').value
+        this._playerOneName = playerOne? playerOne: "Player 1";
+        const playerTwo = document.getElementById('player-name--two').value;
+        this._playerTwoName = playerTwo? playerTwo: "Player 2";
+        const fighterOne = document.querySelector('.fighter-choice--one').value;
+        this._playerOneFighterChoice = fighterOne === "Random"? this._randomFighterGenerator():fighterOne;
+        const fighterTwo = document.querySelector('.fighter-choice--two').value;
+        this._playerTwoFighterChoice = fighterTwo === "Random"? this._randomFighterGenerator():fighterTwo;
+        return {
+            "playerOne": {"name": this._playerOneName, "fighter": this._playerOneFighterChoice},
+            "playerTwo":{"name": this._playerTwoName, "fighter": this._playerTwoFighterChoice},
+        };
+    }
+
+    //Generates fighter type if Random option is selected
+    _randomFighterGenerator(){
+        const selectOptions = document.querySelectorAll('.fighter-choice--one');
+        const fighterOptions = [...selectOptions[0].options].map(o => o.value).slice(1,)
+        const index = Math.floor(Math.random() * (fighterOptions.length))
+        const fighter = fighterOptions[index]
+        return fighter
     }
 
 // clear start up messages, if any

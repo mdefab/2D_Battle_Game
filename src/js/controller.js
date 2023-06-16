@@ -1,10 +1,10 @@
 import FighterMenuView from "./views/FighterMenuView.js";
 import GameView from "./views/GameView.js";
-import GameOver from "./views/GameOverView.js"
+import GameOverView from "./views/GameOverView.js"
 import * as model from "./model.js";
 
 
-const controlStartButton = function(data){
+const controlStart = function(data){
     const gameState = model.initializeGame(data);
     GameView.updateScore(gameState.gameStats.playerOneScore, gameState.gameStats.playerTwoScore);
     GameView.startGame(gameState.playerOne, gameState.playerTwo);
@@ -18,13 +18,31 @@ const controlReadyButton = function(moveChoices){
     const gameStats = model.gameStatus();
     if(gameStats.gameOver){
         GameView.updateScore(gameStats.playerOneScore, gameStats.playerTwoScore);
-        GameOver.gameOverMessages(gameStats);
+        GameOverView.gameOverMessages(gameStats);
     };
+};
+
+const controlRematchButton = function(){
+    //username and fighter choice staying the same, just resetting vitals and equipment lists.
+    console.log("rematch pressed");
+    const oldData = {
+        "playerOne": {"name": model.gameState.playerOne.playerName, "fighter": model.gameState.playerOne.fighterType},
+        "playerTwo":{"name": model.gameState.playerTwo.playerName, "fighter": model.gameState.playerTwo.fighterType},
+    };
+    // create new instance of fighter class to achieve the reset
+    controlStart(oldData);
+
+}
+
+const controlChangeButton = function(){
+    console.log("change pressed");
 }
 
 const init = function(){
-    FighterMenuView.addHandlerStartButton(controlStartButton);
+    FighterMenuView.addHandlerStartButton(controlStart);
     GameView.addHandlerReadyButton(controlReadyButton);
+    GameOverView.addHandlerRematchButton(controlRematchButton);
+    GameOverView.addHandlerChangeButton(controlChangeButton);
 };
 
 init();
