@@ -10,6 +10,7 @@ class GameOverView {
     constructor(){
         this._btnReset = document.querySelector(".reset");
 
+        //full reset button - reset all data - fresh start
         this._btnReset.addEventListener('click', function(){
             window.location.reload();
         })
@@ -26,6 +27,7 @@ class GameOverView {
         this._endGameMessageTwo.insertAdjacentHTML('afterbegin', gameStatus.endGameMessageTwo);
     }
 
+    //fight again button - starts next round immediately - keeps same username/fighter/scores
     addHandlerRematchButton(handler){
         this._btnRematch.addEventListener('click', function(){
             this._hideMenuandOverlayandEndGameMessages();
@@ -33,21 +35,14 @@ class GameOverView {
         }.bind(this))
     }
 
+    //change username or fighter - goes back to initial game menu but keeps score data
     addHandlerChangeButton(handler){
         this._btnChange.addEventListener('click', function(){
+            this._hideMenuandOverlayandEndGameMessages();
             handler();
-        })
+        }.bind(this))
     }
 
-    //full reset button - reset all data - fresh start
-
-    //fight again button - starts next round immediately - keeps same username/fighter/scores
-
-    //change username or fighter - goes back to initial game menu but keeps score data
-
-    // perhaps listen to esc key to bring up game over menu options
-
-    //implement later:
     _hideMenuandOverlayandEndGameMessages(){
         this._endGameMessageOne.classList.add('hidden');
         this._endGameMessageTwo.classList.add('hidden');

@@ -98,6 +98,12 @@ class FighterMenuView {
         this._overlay.classList.add("hidden");
     }
 
+    showMenu(){
+        this._gameMenu.classList.remove("hidden");
+        this._overlay.classList.remove("hidden");
+    }
+
+    // perhaps listen to esc key to bring up menu options
 };
 
 

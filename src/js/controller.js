@@ -18,6 +18,7 @@ const controlReadyButton = function(moveChoices){
     const gameStats = model.gameStatus();
     if(gameStats.gameOver){
         GameView.updateScore(gameStats.playerOneScore, gameStats.playerTwoScore);
+        GameView.endGame();
         GameOverView.gameOverMessages(gameStats);
     };
 };
@@ -32,11 +33,12 @@ const controlRematchButton = function(){
     model.roundReset();
     // create new instance of fighter class to achieve the reset
     controlStart(oldData);
-
 }
 
 const controlChangeButton = function(){
-    console.log("change pressed");
+    FighterMenuView.showMenu();
+    model.roundReset();
+
 }
 
 const init = function(){

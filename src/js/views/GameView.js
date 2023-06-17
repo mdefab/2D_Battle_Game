@@ -28,6 +28,9 @@ class GameView {
         this._setUpPlayerNames(playerOne, playerTwo);
         this._setUpPlayerImages(playerOne, playerTwo);
         this.updatePlayerData(playerOne, playerTwo);
+    }
+
+    endGame(){
         this._clearMoveMessages();
     }
 
