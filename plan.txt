@@ -33,9 +33,9 @@ Done:
 - new menu with fight again (resets fighter health/stamina/itemsEquipped/itemsAvailable but keeps score... perhaps new instance of class btn rounds to reset this data)
 -reset button (window.location.reload()) for full refresh 
 -button to change fighter choice before starting next round, but maintains game stats.
+-change defence messages to show how much damage was blocked
 
  TODO:
--fix defence messages to show how much damage was blocked
 - add new fighters with my name and friend's names
 - implement BaseFighter warcry so it gets displayed on keypress of certain button (addEventListener); 1p: "c" 2p: "m"
 
@@ -43,4 +43,3 @@ Bonus:
 - add new fighters for friends and myself
 - add feature to select 1 or 2p and if 1p game, computer player auto chooses random choice.
 - add feature to be able to press keys instead of selecting with mouse so move choice is anonymous (e.g. player 1 is wasd and player 2 is ijkl)
-- add feature to change from ready to unready status if other player hasn't gone yet

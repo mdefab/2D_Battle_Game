@@ -1,19 +1,29 @@
 class GameOverView {
     _endGameMessageOne = document.querySelector('.end-game-message--one');
     _endGameMessageTwo = document.querySelector('.end-game-message--two');
-    _overlay = document.querySelector(".overlay");
-    _gameOverMenu = document.querySelector(".game-over-menu");
     _btnRematch = document.querySelector(".rematch");
     _btnChange = document.querySelector(".change");
     
     
+    
     constructor(){
         this._btnReset = document.querySelector(".reset");
-
+        this._gameOverMenu = document.querySelector(".game-over-menu");
+        this._overlay = document.querySelector(".overlay");
+        let self = this;
+    
         //full reset button - reset all data - fresh start
         this._btnReset.addEventListener('click', function(){
             window.location.reload();
         })
+
+        //toggle game over menu with esc key
+      document.addEventListener('keydown', function(e){
+            if(e.key === 'Escape'){
+                self._gameOverMenu.classList.toggle('hidden');
+                self._overlay.classList.toggle('hidden');
+            }return;
+        });
     }
 
     gameOverMessages(gameStatus){
