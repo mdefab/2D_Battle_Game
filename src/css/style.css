@@ -232,6 +232,14 @@ body {
     transform: translateY(-50%) rotate(-45deg);
 }
 
+.end-game-message--one {
+    left:0%;
+}
+
+.end-game-message--two {
+    right:0%;
+}
+
 .game-over-menu {
     position:fixed;
     top:50%;

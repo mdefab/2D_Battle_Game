@@ -152,7 +152,7 @@ class GameView {
             return `Attack! ${move.attack} damage`;
         }
         if(move.defend){
-            return `Defend!`;
+            return `Defend! ${move.defenceMessage? move.defenceMessage: ''}`;
         }
         else{
             return 'Error'

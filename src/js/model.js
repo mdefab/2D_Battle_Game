@@ -51,18 +51,18 @@ export const fighterMoveResult = function(move){
         // 1) playerOne attack and playerTwo defend
         if((playerOneValue.attack || playerOneValue.attack === 0) && playerTwoValue.defend){
             const damageTakenTwo = gameState.playerTwo.damageTaken(playerOneValue.attack, playerTwoValue.defend);
-            const playerTwoMessage = `player Two stopped ${playerOneValue.attack - damageTakenTwo} out of ${playerOneValue.attack} damage taken`;
+            const playerTwoMessage = `Stopped ${playerOneValue.attack - damageTakenTwo} of ${playerOneValue.attack} damage`;
             return {
                 'playerOneMove':playerOneValue,
-                'playerTwoMove': {...playerTwoValue,'playerTwoMessage': playerTwoMessage}};   
+                'playerTwoMove': {...playerTwoValue,'defenceMessage': playerTwoMessage}};   
         };
 
         // 2) playerTwo attack and playerOne defend
         if((playerTwoValue.attack || playerTwoValue.attack === 0) && playerOneValue.defend){
             const damageTakenOne = gameState.playerOne.damageTaken(playerTwoValue.attack, playerOneValue.defend);
-            const playerOneMessage = `player One stopped ${playerTwoValue.attack - damageTakenOne} out of ${playerTwoValue.attack} damage taken`;
+            const playerOneMessage = `Stopped ${playerTwoValue.attack - damageTakenOne} of ${playerTwoValue.attack} damage`;
             return {
-                'playerOneMove':{...playerOneValue,'playerOneMessage': playerOneMessage},
+                'playerOneMove':{...playerOneValue,'defenceMessage': playerOneMessage},
                 'playerTwoMove':playerTwoValue};
         };
 
