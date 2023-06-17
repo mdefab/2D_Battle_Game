@@ -10,6 +10,7 @@ class GameOverView {
         this._btnReset = document.querySelector(".reset");
         this._gameOverMenu = document.querySelector(".game-over-menu");
         this._overlay = document.querySelector(".overlay");
+        this._gameMenu = document.querySelector(".game-menu");
         let self = this;
     
         //full reset button - reset all data - fresh start
@@ -20,9 +21,12 @@ class GameOverView {
         //toggle game over menu with esc key
       document.addEventListener('keydown', function(e){
             if(e.key === 'Escape'){
+                //do not allow esc key if main menu open
+                if(!self._gameMenu.classList.contains('hidden'))return;
                 self._gameOverMenu.classList.toggle('hidden');
                 self._overlay.classList.toggle('hidden');
-            }return;
+            }
+            return;
         });
     }
 

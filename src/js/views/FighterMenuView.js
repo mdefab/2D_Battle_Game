@@ -13,6 +13,7 @@ class FighterMenuView {
 
     constructor(){
         this._openGuideMenuButton = document.querySelector(".btn-guide");
+        this._resetGameButton = document.querySelector(".btn-reset");
         this._closeGuideMenuButton = document.querySelector(".close-guide");
         this._playerGuideMenu = document.querySelector('.player-guide');
         this._overlay = document.querySelector(".overlay");
@@ -27,6 +28,10 @@ class FighterMenuView {
         this._closeGuideMenuButton.addEventListener('click', function(){
             self._overlay.style.zIndex = 100;
             self._playerGuideMenu.classList.add("hidden");
+        })
+
+        this._resetGameButton.addEventListener('click', function(){
+            window.location.reload();
         })
     }
 

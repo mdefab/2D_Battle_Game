@@ -36,8 +36,7 @@ Done:
 -change defence messages to show how much damage was blocked
 
  TODO:
-- add new fighters with my name and friend's names
-- implement BaseFighter warcry so it gets displayed on keypress of certain button (addEventListener); 1p: "c" 2p: "m"
+- implement BaseFighter warcry so it gets displayed on keydown of certain button (addEventListener); 1p: "c" 2p: "m"
 
 Bonus:
 - add new fighters for friends and myself
