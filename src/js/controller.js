@@ -8,6 +8,7 @@ const controlStart = function(data){
     const gameState = model.initializeGame(data);
     GameView.updateScore(gameState.gameStats.playerOneScore, gameState.gameStats.playerTwoScore);
     GameView.startGame(gameState.playerOne, gameState.playerTwo);
+    console.log(gameState);
 };
 
 //receives move choice. todo: pass choice into model to get result of move
@@ -38,7 +39,6 @@ const controlRematchButton = function(){
 const controlChangeButton = function(){
     FighterMenuView.showMenu();
     model.roundReset();
-
 }
 
 const init = function(){

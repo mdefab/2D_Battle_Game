@@ -101,6 +101,8 @@ class FighterMenuView {
     showMenu(){
         this._gameMenu.classList.remove("hidden");
         this._overlay.classList.remove("hidden");
+        this._startOne = false;
+        this._startTwo = false;
     }
 
     // perhaps listen to esc key to bring up menu options

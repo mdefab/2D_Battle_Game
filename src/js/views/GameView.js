@@ -32,6 +32,7 @@ class GameView {
 
     endGame(){
         this._clearMoveMessages();
+        this._clearInventoryImages()
     }
 
     //eventlistener for ready button. passes player move choice argument to handler.
@@ -189,7 +190,6 @@ class GameView {
         this._playerOneInventory.innerHTML = '';
         this._playerTwoInventory.classList.add('hidden');
         this._playerOneInventory.classList.add('hidden');
-        
     }
 
     //bring selection box back after hiding on ready
