@@ -18,6 +18,7 @@ const controlReadyButton = function(moveChoices){
     const gameStats = model.gameStatus();
     if(gameStats.gameOver){
         GameView.updateScore(gameStats.playerOneScore, gameStats.playerTwoScore);
+        GameView.endGame();
         GameOverView.gameOverMessages(gameStats);
     };
 };
@@ -28,7 +29,6 @@ const controlRematchButton = function(){
         "playerOne": {"name": model.gameState.playerOne.playerName, "fighter": model.gameState.playerOne.fighterType},
         "playerTwo":{"name": model.gameState.playerTwo.playerName, "fighter": model.gameState.playerTwo.fighterType},
     };
-    GameView.endGame();
     model.roundReset();
     // create new instance of fighter class to achieve the reset
     controlStart(oldData);

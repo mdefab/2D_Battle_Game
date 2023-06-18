@@ -25,14 +25,18 @@ class GameView {
     _readyTwo = false;
 
     startGame(playerOne, playerTwo){
+        this._clearMoveMessages();
+        this._clearInventoryImages();
+        this._selectionBoxOne.classList.remove('hidden');
+        this._selectionBoxTwo.classList.remove('hidden');
         this._setUpPlayerNames(playerOne, playerTwo);
         this._setUpPlayerImages(playerOne, playerTwo);
         this.updatePlayerData(playerOne, playerTwo);
     }
 
     endGame(){
-        this._clearMoveMessages();
-        this._clearInventoryImages()
+        this._selectionBoxOne.classList.add('hidden');
+        this._selectionBoxTwo.classList.add('hidden');
     }
 
     //eventlistener for ready button. passes player move choice argument to handler.
