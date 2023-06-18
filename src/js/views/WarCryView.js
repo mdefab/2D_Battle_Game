@@ -1,7 +1,7 @@
 class WarCryView {
-    #warCryOne = document.querySelector('.warcry--one');
-    #warCryTwo = document.querySelector('.warcry--two');
-    #TIMEOUT_MS = 2000;
+    _warCryOne = document.querySelector('.warcry--one');
+    _warCryTwo = document.querySelector('.warcry--two');
+    _TIMEOUT_MS = 1500;
 
     addHandlerWarCry(handler){
         document.addEventListener('keydown', function(e){
@@ -22,26 +22,26 @@ class WarCryView {
     async showWarCryMessage(warCry){
         if(warCry.warCryOne){
             //show warcry
-            this.#warCryOne.innerHTML = '';
-            this.#warCryOne.classList.remove('hidden');
-            this.#warCryOne.insertAdjacentHTML('afterbegin', `${warCry.warCryOne}`);
-            await this.#sleep(this.#TIMEOUT_MS);
+            this._warCryOne.innerHTML = '';
+            this._warCryOne.classList.remove('hidden');
+            this._warCryOne.insertAdjacentHTML('afterbegin', `${warCry.warCryOne}`);
+            await this._sleep(this._TIMEOUT_MS);
             //hide warcry
-            this.#warCryOne.classList.add('hidden');
+            this._warCryOne.classList.add('hidden');
         }
         if(warCry.warCryTwo){
             //show warcry
-            this.#warCryTwo.innerHTML = '';
-            this.#warCryTwo.insertAdjacentHTML('afterbegin', `${warCry.warCryTwo}`);
-            this.#warCryTwo.classList.remove('hidden');
-            await this.#sleep(this.#TIMEOUT_MS);
+            this._warCryTwo.innerHTML = '';
+            this._warCryTwo.insertAdjacentHTML('afterbegin', `${warCry.warCryTwo}`);
+            this._warCryTwo.classList.remove('hidden');
+            await this._sleep(this._TIMEOUT_MS);
             //hide warcry
-            this.#warCryTwo.classList.add('hidden');
+            this._warCryTwo.classList.add('hidden');
         }
     }
 
     //timer to remove message
-    #sleep(ms){
+    _sleep(ms){
         return new Promise(function(resolve){
             setTimeout(resolve, ms);
         })
