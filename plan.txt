@@ -45,3 +45,4 @@ Bonus:
 - add new fighters for friends and myself
 - add feature to select 1 or 2p and if 1p game, computer player auto chooses random choice.
 - add feature to be able to press keys instead of selecting with mouse so move choice is anonymous (e.g. player 1 is wasd and player 2 is ijkl)
+- perhaps implement computer player for 1p games

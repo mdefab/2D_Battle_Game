@@ -316,6 +316,12 @@ body {
 }
 
 @media(max-width: 60rem){
+    .game-menu {
+        padding-top:0;
+    }
+    .game-menu h1 {
+        font-size:2rem;
+    }
     .menu-grid{
         display:flex;
         flex-direction: column;
@@ -327,7 +333,7 @@ body {
         bottom:6%;
     }
     .main-header {
-        font-size:3rem;
+        font-size:2.5rem;
     }
 }
 @media(max-width:30rem){
@@ -358,5 +364,11 @@ body {
     }
     .player-name-title h2 {
         font-size:1.5rem;
+    }
+    .player-menu {
+        margin-top: 0;
+    }
+    .menu-player--two h2 {
+        margin-top:0;
     }
 }
