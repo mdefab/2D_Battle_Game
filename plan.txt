@@ -23,21 +23,23 @@ keypress to bring up menu: perhaps esc
 Done:
 - make menu and overlay disappear after both users click ready
 - implement guide button so guide appears on click and closes on click of close button.
-- add guide info: should show fighter stats plus explanation of gam
--guide will have highest z-index. change overlay z-index to be higher than game-menu when guide is open
+- add guide info: should show fighter stats plus explanation of game
+- guide will have highest z-index. change overlay z-index to be higher than game-menu when guide is open
 - implement initializing of fighter class for backend model + modify image width depending on fighter choice (widest: tank, skinniest: athlete)
 - implement gameView for tracking score/health/stamina/attack
 - implement tracking of items picked up and items equipped in GameView (inventory images)
 - implement game logic with death on health = 0
 - implement post-game screen: victor/defeat text, score update
 - new menu with fight again (resets fighter health/stamina/itemsEquipped/itemsAvailable but keeps score... perhaps new instance of class btn rounds to reset this data)
--reset button (window.location.reload()) for full refresh 
--button to change fighter choice before starting next round, but maintains game stats.
--change defence messages to show how much damage was blocked
+- reset button (window.location.reload()) for full refresh 
+- button to change fighter choice before starting next round, but maintains game stats.
+- change defence messages to show how much damage was blocked
+- Fix bug where uesrs can escape end game menu and choose another move for one round. --> hide select boxes until start of next game.
 
  TODO:
- - Fix bug where uesrs can escape end game menu and choose another move for one round. --> hide select boxes until start of next game.
 - implement BaseFighter warcry so it gets displayed on keydown of certain button (addEventListener); 1p: "c" 2p: "m"
+- button to see hotkey controls
+- button to see menu + indicate to press esc for menu
 
 Bonus:
 - add new fighters for friends and myself

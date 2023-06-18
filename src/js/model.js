@@ -185,3 +185,17 @@ export const roundReset = function(){
     gameState.gameStats.endGameMessageTwo = '';
 };
 
+export const warCry = function(playerNumber){
+    //fighters not initialized, no war cry available
+    if(!gameState.playerOne || !gameState.playerTwo){
+        return;
+    }
+    if(playerNumber === 1){
+        const warCryOne = gameState.playerOne.warCry();
+        return {'warCryOne': warCryOne}
+    }
+    if(playerNumber === 2){
+        const warCryTwo = gameState.playerTwo.warCry();
+        return {'warCryTwo': warCryTwo}
+    }
+}

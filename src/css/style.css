@@ -146,6 +146,16 @@ body {
     font-size:1.2rem;
 }
 
+.warcry {
+    position:absolute;
+    top:25%;
+    right:15%;
+    background-color: white;
+    border-radius: 15px;
+    border: 1px black solid;
+    padding:1rem;
+}
+
 .game-menu {
     position:fixed;
     top:50%;
@@ -316,5 +326,8 @@ body {
 @media(max-width:30rem){
     .player-container{
         width:auto;
+    }
+    .warcry {
+        right:5%;
     }
 }

@@ -1,6 +1,7 @@
 import FighterMenuView from "./views/FighterMenuView.js";
 import GameView from "./views/GameView.js";
 import GameOverView from "./views/GameOverView.js"
+import WarCryView from "./views/WarCryView.js";
 import * as model from "./model.js";
 
 
@@ -41,11 +42,18 @@ const controlChangeButton = function(){
     
 }
 
+const controlWarCry = function(playerNumber){
+    const res = model.warCry(playerNumber);
+    if(!res) return;
+    WarCryView.showWarCryMessage(res);
+};
+
 const init = function(){
     FighterMenuView.addHandlerStartButton(controlStart);
     GameView.addHandlerReadyButton(controlReadyButton);
     GameOverView.addHandlerRematchButton(controlRematchButton);
     GameOverView.addHandlerChangeButton(controlChangeButton);
+    WarCryView.addHandlerWarCry(controlWarCry);
 };
 
 init();
