@@ -35,10 +35,9 @@ Done:
 - button to change fighter choice before starting next round, but maintains game stats.
 - change defence messages to show how much damage was blocked
 - Fix bug where uesrs can escape end game menu and choose another move for one round. --> hide select boxes until start of next game.
-- implement BaseFighter warcry so it gets displayed on keydown of certain button (addEventListener); 1p: "c" 2p: "m"
-
+- implement BaseFighter warcry so it gets displayed on keydown - 1p: "c" 2p: "m"
+- button to see hotkey controls in menus
  TODO:
-- button to see hotkey controls
 - button to see menu + indicate to press esc for menu
 
 Bonus:
