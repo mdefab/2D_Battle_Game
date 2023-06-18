@@ -190,16 +190,18 @@ body {
 
 .btn-guide {
     position: absolute;
-    top:0.5rem;
-    right:0.5rem;
     font-size:1.2rem;
+    bottom: 8%;
+    right: 50%;
+    transform: translate(50%);
 }
 
 .btn-reset {
     position: absolute;
-    top:0.5rem;
-    left:0.5rem;
     font-size:1.2rem;
+    bottom: 1%;
+    right: 50%;
+    transform: translate(50%);
 }
 
 .player-guide {
@@ -306,9 +308,13 @@ body {
     .game-container{
         flex-direction: column;
     }
+
+    .btn-guide {
+        bottom:6%;
+    }
+}
 @media(max-width:30rem){
     .player-container{
         width:auto;
     }
-}
 }

@@ -36,6 +36,7 @@ Done:
 -change defence messages to show how much damage was blocked
 
  TODO:
+ - Fix bug where uesrs can escape end game menu and choose another move for one round. --> hide select boxes until start of next game.
 - implement BaseFighter warcry so it gets displayed on keydown of certain button (addEventListener); 1p: "c" 2p: "m"
 
 Bonus:
