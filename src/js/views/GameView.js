@@ -223,6 +223,8 @@ class GameView {
         if(fighterType === 'Bruiser') return 65;
         if(fighterType === 'Tank') return 85;
         if(fighterType === 'Athlete') return 45;
+        //else custom fighter
+        return 95;
     }
 
 };
