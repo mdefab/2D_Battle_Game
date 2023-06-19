@@ -168,7 +168,7 @@ class GameView {
 
             Object.keys(playerOne.itemsEquipped).forEach(item => {
                 const markUpOne = `<div class="equipped-items equipped-items--one"><img class="img-equipped img-equipped--one" 
-            src="./src/img/${playerOne.itemsEquipped[item]["name"]}.jpg" alt="${playerOne.itemsEquipped[item]["name"]} image"></div>`;
+            src="./static/src/img/${playerOne.itemsEquipped[item]["name"]}.jpg" alt="${playerOne.itemsEquipped[item]["name"]} image"></div>`;
             this._playerOneInventory.insertAdjacentHTML('beforeend', markUpOne)
             });
         }
@@ -178,14 +178,12 @@ class GameView {
 
             Object.keys(playerTwo.itemsEquipped).forEach(item => {
                 const markUpTwo = `<div class="equipped-items equipped-items--two"><img class="img-equipped img-equipped--two" 
-            src="./src/img/${playerTwo.itemsEquipped[item]["name"]}.jpg" alt="${playerTwo.itemsEquipped[item]["name"]} image"></div>`;
+            src="./static/src/img/${playerTwo.itemsEquipped[item]["name"]}.jpg" alt="${playerTwo.itemsEquipped[item]["name"]} image"></div>`;
             this._playerTwoInventory.insertAdjacentHTML('beforeend', markUpTwo)
             });
             
         }
     }
-
-    // `./src/img/player_one_${moves.playerOneMove}.jpg`
 
     //update player move message box
     updatePlayerMoveandImageMessages(moves){
@@ -223,8 +221,8 @@ class GameView {
   
     //methods to update fighter image
     _updatePlayerMoveImages(moves){
-        this._playerOneImage.src = `./src/img/player_one_${moves.playerOneMove.move}.jpg`;
-        this._playerTwoImage.src = `./src/img/player_two_${moves.playerTwoMove.move}.jpg`;
+        this._playerOneImage.src = `./static/src/img/player_one_${moves.playerOneMove.move}.jpg`;
+        this._playerTwoImage.src = `./static/src/img/player_two_${moves.playerTwoMove.move}.jpg`;
     }
 
     //Generates choice if random option is selected
@@ -268,8 +266,8 @@ class GameView {
     }
 
     _setUpPlayerImages(playerOne, playerTwo){
-        this._playerOneImage.src = './src/img/player_one.jpg';
-        this._playerTwoImage.src = './src/img/player_two.jpg';
+        this._playerOneImage.src = './static/src/img/player_one.jpg';
+        this._playerTwoImage.src = './static/src/img/player_two.jpg';
         const widthOne = this._imageWidthSetUp(playerOne.fighterType);
         const widthTwo = this._imageWidthSetUp(playerTwo.fighterType);
         this._playerOneImage.style.width = `${widthOne}%`
