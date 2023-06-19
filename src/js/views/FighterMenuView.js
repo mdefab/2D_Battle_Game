@@ -30,6 +30,16 @@ class FighterMenuView {
             self._playerGuideMenu.classList.add("hidden");
         })
 
+        //close player guide on esc key
+        document.addEventListener('keydown', function(e){
+            //ignore esc key for event listener if guide not open
+            if(self._playerGuideMenu.classList.contains('hidden')) return;
+            if(e.key === 'Escape'){
+                self._overlay.style.zIndex = 100;
+                self._playerGuideMenu.classList.add("hidden");
+            }
+        })
+
         this._resetGameButton.addEventListener('click', function(){
             window.location.reload();
         })
