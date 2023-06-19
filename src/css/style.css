@@ -34,6 +34,7 @@ body {
     display: flex;
     width:97vw;
     justify-content:center;
+    align-items: center;
 }
 
 .player-container {
@@ -236,10 +237,19 @@ body {
 }
 
 .close-guide,
-.close-hotkeys {
+.close-hotkeys,
+.close-menu {
     position: absolute;
     top:0.5rem;
     right:0.5rem;
+    font-size:1.2rem;
+}
+
+.open-menu {
+    margin: 1rem auto;
+    position: absolute;
+    right: 50%;
+    transform: translate(50%);
     font-size:1.2rem;
 }
 
@@ -279,7 +289,7 @@ body {
     border: solid black;
     text-align: center;
     width: fit-content;
-    padding: 2rem;
+    padding: 3rem;
     box-shadow: 0 4rem 6rem rgba(0, 0, 0, 0.15);
     z-index: 1001;
     display: flex;
@@ -289,7 +299,7 @@ body {
 
 .game-over-menu button {
     font-size:1.2rem;
-    border-radius: 10px;
+    border-radius: 8px;
     padding:0.5rem;
     transition: 0.1s ease-out;
 }
@@ -371,7 +381,8 @@ body {
     .player-menu input,
     #player-name--two,
     #player-name--one,
-    .ready{
+    .ready,
+    .open-menu{
         font-size:1rem;
     }
     .player-name-title h2 {

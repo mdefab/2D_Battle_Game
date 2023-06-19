@@ -12,6 +12,8 @@ class GameOverView {
         this._overlay = document.querySelector(".overlay");
         this._gameMenu = document.querySelector(".game-menu");
         this._controlsMenu = document.querySelector(".player-controls");
+        this._gameOverMenuButton = document.querySelector('.open-menu');
+        this._closeGameOverMenuButton = document.querySelector('.close-menu');
         let self = this;
     
         //full reset button - reset all data - fresh start
@@ -19,7 +21,7 @@ class GameOverView {
             window.location.reload();
         })
 
-        //toggle game over menu with esc key
+        //toggle game over/pause menu with esc key
       document.addEventListener('keydown', function(e){
             if(e.key === 'Escape'){
                 //do not allow esc key if main menu or hotkeys menu open
@@ -30,6 +32,17 @@ class GameOverView {
             }
             return;
         });
+        //open game over/pause menu with button
+        this._gameOverMenuButton.addEventListener('click', function(){
+            self._gameOverMenu.classList.toggle('hidden');
+            self._overlay.classList.toggle('hidden');
+        })
+        //close game over/pause menu with button
+        this._closeGameOverMenuButton.addEventListener('click', function(){
+            self._gameOverMenu.classList.toggle('hidden');
+            self._overlay.classList.toggle('hidden');
+        })
+
     }
 
     gameOverMessages(gameStatus){

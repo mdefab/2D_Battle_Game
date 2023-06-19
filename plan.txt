@@ -37,10 +37,10 @@ Done:
 - Fix bug where uesrs can escape end game menu and choose another move for one round. --> hide select boxes until start of next game.
 - implement BaseFighter warcry so it gets displayed on keydown - 1p: "c" 2p: "m"
 - button to see hotkey controls in menus
- TODO:
 - button to see menu + indicate to press esc for menu
-Bonus:
+TODO:
+- add ability to press keys instead of selecting with mouse so move choice is anonymous (e.g. player 1 is wasd and player 2 is ijkl)
 - add new fighters for friends and myself
-- add feature to select 1 or 2p and if 1p game, computer player auto chooses random choice.
-- add feature to be able to press keys instead of selecting with mouse so move choice is anonymous (e.g. player 1 is wasd and player 2 is ijkl)
-- perhaps implement computer player for 1p games
+Future idea:
+- add feature to select 1 or 2p and if 1p game, computer player auto chooses random choice except if user is below y health 
+  and computer has stamina over x amount, then computer will attack
