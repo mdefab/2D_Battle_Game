@@ -9,7 +9,7 @@ class MichaelFighter extends BaseFighter {
     ['health', 30], ['health', 40], ['health', 50], ['stamina', 20],
     ['stamina', 30], ['stamina', 50], ['armour', 1.4]];
     _itemsEquipped = {};
-    _attackMessage = "I'm unbeatable";
+    _attackMessage = "I'm undefeated btw!";
     _fighterType = "Michael";
 
 }   

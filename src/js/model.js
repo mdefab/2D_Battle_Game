@@ -1,6 +1,7 @@
 import AthleteFighter from './AthleteFighterClass.js';
 import BruiserFighter from './BruiserFighterClass.js';
 import MichaelFighter from './MichaelFighterClass.js';
+import SmithFighter from './SmithFighterClass.js';
 import TankFighter from './TankFighterClass.js';
 
 
@@ -39,6 +40,8 @@ const initializeFighter = function(fighter, username){
             return new BruiserFighter(username);
         case "Michael":
             return new MichaelFighter(username);
+        case "Smithannicus":
+            return new SmithFighter(username);
     };
 };
 
