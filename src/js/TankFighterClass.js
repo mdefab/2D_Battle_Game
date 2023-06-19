@@ -9,7 +9,7 @@ class TankFighter extends BaseFighter {
     ['health', 30], ['health', 40], ['health', 50], ['stamina', 20],
     ['stamina', 30], ['stamina', 50], ['shield', 1.2]];
     _itemsEquipped = {};
-    _attackMessage = "ROARR!"
+    _attackMessages = ["ROARR!", "Ahh!", "Die insect!"]
     _fighterType = "Tank";
 }; 
 

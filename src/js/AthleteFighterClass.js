@@ -9,7 +9,7 @@ class AthleteFighter extends BaseFighter {
     ['health', 30], ['health', 40], ['health', 50], ['stamina', 20],
     ['stamina', 30], ['stamina', 50], ['armour', 1.4]];
     _itemsEquipped = {};
-    _attackMessage = "Wa-powww";
+    _attackMessages = ["Wa-powww", "Boom", "Bam"];
     _fighterType = "Athlete";
 
 }   

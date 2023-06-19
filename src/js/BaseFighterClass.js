@@ -5,8 +5,9 @@ class BaseFighter {
     _defenceLevel;
     _itemsAvailable = [];
     _itemsEquipped = {};
-    _attackMessage;
+    _attackMessages;
     _fighterType;
+    _index = 0;
 
     constructor(playerName){
         this.playerName = playerName;
@@ -14,7 +15,12 @@ class BaseFighter {
 
     //returns string to add on attack
     warCry(){
-        return this._attackMessage;
+        if(this._index >= this._attackMessages.length){
+            this._index = 0;
+        }
+        const attackMessage = this._attackMessages[this._index]
+        this._index += 1;
+        return attackMessage;
     }
     //returns damage
     attack(){

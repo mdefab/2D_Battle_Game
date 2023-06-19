@@ -9,7 +9,7 @@ class BruiserFighter extends BaseFighter {
     ['health', 30], ['health', 40], ['health', 50], ['stamina', 20],
     ['stamina', 30], ['stamina', 50], ['armour', 1.4]];
     _itemsEquipped = {};
-    _attackMessage = "Hurrahh!";
+    _attackMessages = ["Hurrahh!", "Hu-yeahh!", "Bam bam"];
     _fighterType = "Bruiser";
 }; 
 

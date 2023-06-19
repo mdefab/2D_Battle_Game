@@ -9,7 +9,7 @@ class SmithFighter extends BaseFighter {
     ['health', 30], ['health', 40], ['health', 50], ['stamina', 20],
     ['stamina', 30], ['stamina', 50], ['shield', 1.2]];
     _itemsEquipped = {};
-    _attackMessage = "Melitaaaa";
+    _attackMessages = ["Melitaaaa", "Breattheee", "Huehuehuehue", "I would have wine!"];
     _fighterType = "Smithannicus";
 
 }   
