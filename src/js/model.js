@@ -3,6 +3,7 @@ import BruiserFighter from './BruiserFighterClass.js';
 import MichaelFighter from './MichaelFighterClass.js';
 import SmithFighter from './SmithFighterClass.js';
 import TankFighter from './TankFighterClass.js';
+import RacaFighter from './RacFighterClass.js';
 
 
     // Will push instances of class into gameState on game initialization
@@ -42,6 +43,8 @@ const initializeFighter = function(fighter, username){
             return new MichaelFighter(username);
         case "Smithannicus":
             return new SmithFighter(username);
+        case "Racilles":
+            return new RacaFighter(username);
     };
 };
 

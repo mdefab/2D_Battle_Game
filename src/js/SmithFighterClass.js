@@ -1,8 +1,8 @@
 import BaseFighter from "./BaseFighterClass.js";
 
 class SmithFighter extends BaseFighter {
-    _health = 100;
-    _stamina = 100;
+    _health = 150;
+    _stamina = 150;
     _attackLevel = 8;
     _defenceLevel = 8;
     _itemsAvailable = [['sword', 1.3], ['health', 10], ['health', 20],
