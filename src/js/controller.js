@@ -40,7 +40,6 @@ const controlChangeButton = function(){
     GameView.endGame();
     model.roundReset();
     FighterMenuView.showMenu();
-    
 }
 
 const controlWarCry = function(playerNumber){

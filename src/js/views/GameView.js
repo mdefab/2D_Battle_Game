@@ -1,5 +1,3 @@
-//todo: eventListener for key pressing options instead of selecting with mouse so your move is
-//kept secret.
 class GameView {
     _scorePlayerOne = document.querySelector('.score-player--one');
     _scorePlayerTwo = document.querySelector('.score-player--two');
@@ -19,14 +17,22 @@ class GameView {
     _playerTwoImage = document.querySelector('.img-player--two');
     _playerOneInventory = document.querySelector('.inventory-player--one');
     _playerTwoInventory = document.querySelector('.inventory-player--two');
+    _gameOverMenu = document.querySelector(".game-over-menu");
+    _gameMenu = document.querySelector(".game-menu");
+    _playerOneChoice = document.getElementById('choice-player--one').value;
+    _playerTwoChoice = document.getElementById('choice-player--two').value;
     _playerOneMove;
     _playerTwoMove;
     _readyOne = false;
     _readyTwo = false;
+    _gameOn = true;
 
     startGame(playerOne, playerTwo){
+        this._gameOn = true;
         this._clearMoveMessages();
         this._clearInventoryImages();
+        this._playerOneChoice = 'random' //reset to default choice
+        this._playerTwoChoice = 'random' //reset to default choice
         this._selectionBoxOne.classList.remove('hidden');
         this._selectionBoxTwo.classList.remove('hidden');
         this._setUpPlayerNames(playerOne, playerTwo);
@@ -37,6 +43,7 @@ class GameView {
     endGame(){
         this._selectionBoxOne.classList.add('hidden');
         this._selectionBoxTwo.classList.add('hidden');
+        this._gameOn = false;
     }
 
     //eventlistener for ready button. passes player move choice argument to handler.
@@ -64,6 +71,55 @@ class GameView {
             const setUpData = this._allReadyDataSetUp();
             handler(setUpData);
         }.bind(this))
+
+        //hotkey option instead of manual selection and clicking ready - hides choice from opponent
+        document.addEventListener('keydown', function(e){
+             //do not listen for keys if main menu or gameover menu open or game over
+            if(!this._gameMenu.classList.contains('hidden'))return;
+            if(!this._gameOverMenu.classList.contains('hidden')) return;
+            if(!this._gameOn)return;
+            if(['w', 'a', 's', 'd'].includes(e.key)){
+                this._readyOne = true;
+                this._selectionBoxOne.classList.add('hidden');
+                this._gameMessageOne.insertAdjacentHTML('afterbegin', "Player 1 ready. <br> Waiting for player 2");
+                const choiceOne = this._hotKeyMoveGenerator(e.key);
+                this._playerOneChoice = choiceOne;
+            }
+            if(['i', 'j', 'k', 'l'].includes(e.key)){
+                this._readyTwo = true;
+                this._selectionBoxTwo.classList.add('hidden');
+                this._gameMessageTwo.insertAdjacentHTML('afterbegin', "Player 2 ready. <br> Waiting for player 1");
+                const choiceTwo = this._hotKeyMoveGenerator(e.key);
+                this._playerTwoChoice = choiceTwo;
+            }
+            if(!this._readyOne || !this._readyTwo) return; //one of the players is not ready
+
+            const setUpData = this._allReadyDataSetUp();
+            handler(setUpData);
+
+        }.bind(this))
+
+    }
+
+    _hotKeyMoveGenerator(hotkey){
+        switch(hotkey){
+            case "w":
+                return "random"
+            case "a":
+                return "attack"
+            case "d":
+                return "defend"
+            case "s":
+                return "item"
+            case "i":
+                return "random"
+            case "j":
+                return "attack"
+            case "l":
+                return "defend"
+            case "k":
+                return "item"
+        }
     }
 
     _allReadyDataSetUp(){
@@ -75,9 +131,9 @@ class GameView {
     }
 
     _getPlayerMoves(){
-        const moveOne = document.getElementById('choice-player--one').value;
+        const moveOne = this._playerOneChoice;
         this._playerOneMove = moveOne === "random"? this._randomMoveGenerator(): moveOne;
-        const moveTwo = document.getElementById('choice-player--two').value;
+        const moveTwo = this._playerTwoChoice;
         this._playerTwoMove = moveTwo === "random"? this._randomMoveGenerator(): moveTwo;
         
         const moves = {
