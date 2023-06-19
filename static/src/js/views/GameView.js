@@ -80,20 +80,28 @@ class GameView {
             if(!this._gameMenu.classList.contains('hidden'))return;
             if(!this._gameOverMenu.classList.contains('hidden')) return;
             if(!this._gameOn)return;
+
             if(['w', 'a', 's', 'd'].includes(e.key)){
-                this._readyOne = true;
-                this._selectionBoxOne.classList.add('hidden');
-                this._gameMessageOne.insertAdjacentHTML('afterbegin', "Player 1 ready. <br> Waiting for player 2");
-                const choiceOne = this._hotKeyMoveGenerator(e.key);
-                this._playerOneChoice = choiceOne;
+                //can't change selection once you click a hotkey until the next round
+                if(this._readyOne === false){
+                    this._readyOne = true;
+                    this._selectionBoxOne.classList.add('hidden');
+                    this._gameMessageOne.insertAdjacentHTML('afterbegin', "Player 1 ready. <br> Waiting for player 2");
+                    const choiceOne = this._hotKeyMoveGenerator(e.key);
+                    this._playerOneChoice = choiceOne;
+                }
             }
             if(['i', 'j', 'k', 'l'].includes(e.key)){
-                this._readyTwo = true;
-                this._selectionBoxTwo.classList.add('hidden');
-                this._gameMessageTwo.insertAdjacentHTML('afterbegin', "Player 2 ready. <br> Waiting for player 1");
-                const choiceTwo = this._hotKeyMoveGenerator(e.key);
-                this._playerTwoChoice = choiceTwo;
+                //can't change selection once you click a hotkey until the next round
+                if(this._readyTwo === false){
+                    this._readyTwo = true;
+                    this._selectionBoxTwo.classList.add('hidden');
+                    this._gameMessageTwo.insertAdjacentHTML('afterbegin', "Player 2 ready. <br> Waiting for player 1");
+                    const choiceTwo = this._hotKeyMoveGenerator(e.key);
+                    this._playerTwoChoice = choiceTwo;
+                }
             }
+            
             if(!this._readyOne || !this._readyTwo) return; //one of the players is not ready
 
             const setUpData = this._allReadyDataSetUp();
