@@ -2,6 +2,7 @@ import FighterMenuView from "./views/FighterMenuView.js";
 import GameView from "./views/GameView.js";
 import GameOverView from "./views/GameOverView.js"
 import WarCryView from "./views/WarCryView.js";
+import HotkeysView from "./views/HotkeysView.js";
 import * as model from "./model.js";
 
 
