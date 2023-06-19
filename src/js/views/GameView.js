@@ -19,8 +19,8 @@ class GameView {
     _playerTwoInventory = document.querySelector('.inventory-player--two');
     _gameOverMenu = document.querySelector(".game-over-menu");
     _gameMenu = document.querySelector(".game-menu");
-    _playerOneChoice = document.getElementById('choice-player--one').value;
-    _playerTwoChoice = document.getElementById('choice-player--two').value;
+    _playerOneChoice;
+    _playerTwoChoice;
     _playerOneMove;
     _playerTwoMove;
     _readyOne = false;
@@ -50,24 +50,26 @@ class GameView {
     addHandlerReadyButton(handler){
         this._readyButtonOne.addEventListener("click", function(){
             this._readyOne = true;
+            this._playerOneChoice = document.getElementById('choice-player--one').value;
             if(!this._readyTwo){
                 this._selectionBoxOne.classList.add('hidden');
                 this._gameMessageOne.insertAdjacentHTML('afterbegin', "Player 1 ready. <br> Waiting for player 2");
                 return; //other player not ready
             }
-
+            
             const setUpData = this._allReadyDataSetUp();
             handler(setUpData);
         }.bind(this))
 
         this._readyButtonTwo.addEventListener("click", function(){
             this._readyTwo = true;
+            this._playerTwoChoice = document.getElementById('choice-player--two').value;
             if(!this._readyOne){
                 this._selectionBoxTwo.classList.add('hidden');
                 this._gameMessageTwo.insertAdjacentHTML('afterbegin', "Player 2 ready. <br> Waiting for player 1");
                 return; //other player not ready
             }
-
+            
             const setUpData = this._allReadyDataSetUp();
             handler(setUpData);
         }.bind(this))
