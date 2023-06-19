@@ -41,10 +41,9 @@ Done:
 - add new fighter class to test extending app with new fighters: All you need to do is make the change in index.html
   select options to add the new fighter option and in model for initializeFighter options which initializes the choice with
   the new fighter class.
+- make warcry method iterate through a list of warcries instead of one.
 TODO:
 - add ability to press keys instead of selecting with mouse so move choice is anonymous (e.g. player 1 is wasd and player 2 is ijkl)
-- make warcry method iterate through a list of warcries instead of one.
-- 
 Future idea:
 - add feature to select 1 or 2p and if 1p game, computer player auto chooses random choice except if user is below y health 
   and computer has stamina over x amount, then computer will attack

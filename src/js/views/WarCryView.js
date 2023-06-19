@@ -1,7 +1,7 @@
 class WarCryView {
     _warCryOne = document.querySelector('.warcry--one');
     _warCryTwo = document.querySelector('.warcry--two');
-    _TIMEOUT_MS = 2500;
+    _TIMEOUT_MS = 2000;
 
     addHandlerWarCry(handler){
         document.addEventListener('keydown', function(e){
