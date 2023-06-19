@@ -4,6 +4,9 @@ import GameOverView from "./views/GameOverView.js"
 import WarCryView from "./views/WarCryView.js";
 import HotkeysView from "./views/HotkeysView.js";
 import * as model from "./model.js";
+// import 'core-js/stable';
+// import 'regenerator-runtime/runtime';
+// import { async } from 'regenerator-runtime';
 
 
 const controlStart = function(data){

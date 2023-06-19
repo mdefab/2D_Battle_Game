@@ -39,7 +39,7 @@ const initializeFighter = function(fighter, username){
             return new AthleteFighter(username);
         case "Bruiser":
             return new BruiserFighter(username);
-        case "Michael":
+        case "Mikeules":
             return new MichaelFighter(username);
         case "Smithannicus":
             return new SmithFighter(username);

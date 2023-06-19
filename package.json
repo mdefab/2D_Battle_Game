@@ -1,22 +1,24 @@
 {
   "name": "2d_battle_game",
   "version": "1.0.0",
-  "description": "",
-  "main": "script.js",
+  "description": "Simple two player 2D Battle Game. Fight to survive!",
+  "default": "index.html",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "parcel index.html",
+    "build": "parcel build index.html --dist-dir ./dist"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mdefab/2D_Battle_Game.git"
   },
-  "author": "",
+  "author": "Michael De Fab",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/mdefab/2D_Battle_Game/issues"
-  },
-  "homepage": "https://github.com/mdefab/2D_Battle_Game#readme",
   "devDependencies": {
-    "parcel": "^2.8.3"
+    "parcel": "^2.8.3",
+    "process": "^0.11.10"
+  },
+  "dependencies": {
+    "core-js": "^3.31.0",
+    "regenerator-runtime": "^0.13.11"
   }
 }
